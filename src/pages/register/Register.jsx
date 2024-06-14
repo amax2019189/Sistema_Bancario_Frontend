@@ -47,19 +47,13 @@ function Register() {
                         />
                     </div>
                     <br />
-                    <button
-                        type="submit"
-                        className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
-                    >
-                        Register
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                        <a href="/">Login</a>
                     </button>
                     <br />
                     <br />
-                    <button
-                        type="submit"
-                        className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
-                    >
-                        Login
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                        <a href="/">Login</a>
                     </button>
                 </form>
             </div>
