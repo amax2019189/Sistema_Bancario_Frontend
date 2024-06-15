@@ -3,4 +3,4 @@ export const validateUsername = ( username ) => {
     return regex.test( username )
 }
 
-export const validateUsernameMessage = 'El username debe de tener entre 3 y 8 caracteres sin espacios.'
+export const validateUsernameMessage = 'El username debe de tener entre 3 y 15 caracteres sin espacios.'

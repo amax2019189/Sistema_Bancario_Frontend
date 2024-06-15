@@ -1,20 +1,15 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import React from 'react'
-import Login from './pages/login/Login.jsx'
-import Register from './pages/register/Register.jsx'
-import HomePage from './pages/homePage/HomePage.jsx'
+import { useRoutes } from "react-router-dom"
+import { Toaster } from "react-hot-toast"
+import routes from "./routes.jsx"
 
-function App() {
+export const App = () => {
+    let element = useRoutes( routes );
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Login></Login>} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/homePage" element={<HomePage />} />
-
-            </Routes>
-        </BrowserRouter>
+        <>
+            {element}
+            <Toaster position="top-center" reverseOrder={false} />
+        </>
     )
 }
 
-export default App
+export default App;
