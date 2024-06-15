@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Register() {
+export const Register = () => {
     return (
         <div className="h-screen dark:bg-gray-900 flex justify-center items-center">
             <div className="lg:w-2/5 md:w-1/2 w-2/3">
@@ -57,7 +57,7 @@ function Register() {
                     </button>
                 </form>
             </div>
-        </div>)
+        </div> )
 }
 
 export default Register
