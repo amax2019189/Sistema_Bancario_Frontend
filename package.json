@@ -1,13 +1,8 @@
 {
-<<<<<<< HEAD
+
   "name": "sistema-bancario-frontend",
   "private": true,
   "version": "1.0.0",
-=======
-  "name": "carrer-lift-frontend",
-  "private": true,
-  "version": "0.0.0",
->>>>>>> 91fd46b7f09e2c9ed2cd5c442645b5620a4c3c63
   "type": "module",
   "scripts": {
     "dev": "vite",
