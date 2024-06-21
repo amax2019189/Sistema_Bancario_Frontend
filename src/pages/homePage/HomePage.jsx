@@ -1,12 +1,16 @@
 import React from 'react'
 import Navbar from '../../components/Navbar'
 import SectionA from './SectionA'
+import { useUserDetails } from '../../shared/hooks'
+import { DepositForm } from '../deposits/DepositForm'
 
-function HomePage() {
+
+function HomePage () {
+    const { isLogged, logout } = useUserDetails()
     return (
         <>
             <Navbar />
-            <section className="bg-white mb-[65px]">
+            {!isLogged ? ( <section className="bg-white mb-[65px]">
                 <br />
                 <section className="">
                     <div className="container mx-auto">
@@ -97,7 +101,7 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> ) : ( <DepositForm /> )}
             <SectionA />
         </>
     )
