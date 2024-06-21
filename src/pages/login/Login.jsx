@@ -85,7 +85,7 @@ export const Login = ({ switchAuthHandler }) => {
               }
             `}
             </style>
-            <div className="h-screen flex bg-gray-200 h-screen flex justify-center" id="conteinerLog">
+            <div className="h-screen flex bg-gray-200  justify-center" id="conteinerLog">
                 <div className="hidden lg:flex w-full lg:w-1/2 login_img_section justify-around items-center">
                     <div className="bg-black opacity-20 inset-0 z-0" />
 

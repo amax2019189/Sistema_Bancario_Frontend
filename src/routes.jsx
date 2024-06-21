@@ -10,8 +10,7 @@ const routes = [
     { path: '/register', element: <Register /> },
     { path: '/*', element: <HomePage /> },
     { path: '/Prueba', element: <Prueba /> },
-    { path: '/user', element: <AccountPage /> },
-
+    { path: '/user', element: <AccountPage /> }
 ];
 
 export default routes;
