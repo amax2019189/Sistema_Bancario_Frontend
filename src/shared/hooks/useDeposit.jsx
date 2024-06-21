@@ -8,6 +8,7 @@ export const useDeposit = () => {
         amount: '',
         description: '',
         exchangeRate: 'quetzales', // default value
+        operationNumber: '',
     } );
     const [error, setError] = useState( {} );
     const [loading, setLoading] = useState( false );
@@ -148,26 +149,18 @@ export const useDeposit = () => {
 
         setLoading( true );
 
-        try {
-            console.log( 'Sending reverse deposit request with payload:', reversePayload );
-            const response = await reverseDeposit( reversePayload );
+        console.log( 'Sending reverse deposit request with payload:', reversePayload );
+        const response = await reverseDeposit( { data: reversePayload } );
 
-            if ( response.error ) {
-                setError( prevState => ( {
-                    ...prevState,
-                    form: 'Error al revertir el depósito',
-                } ) );
-            } else {
-                setSuccess( true );
-            }
-        } catch ( error ) {
-            console.error( 'Error reversing deposit:', error.message );
-            setError( prevState => ( {
+        setLoading( false )
+
+        if ( response.error ) {
+            setError( ( prevState ) => ( {
                 ...prevState,
                 form: 'Error al revertir el depósito',
             } ) );
-        } finally {
-            setLoading( false );
+        } else {
+            setSuccess( true );
         }
     };
 
