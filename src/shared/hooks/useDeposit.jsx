@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { makeDeposit, editDeposit } from '../../services/';
+import { makeDeposit, editDeposit, reverseDeposit } from '../../services/';
 import { validateAccountNumber, accountNumberValidationMessage, validateOperationNumber, operationNumberValidationMessage } from '../validators/';
 
 export const useDeposit = () => {
@@ -79,50 +79,96 @@ export const useDeposit = () => {
             setSuccess( true );
         }
 
-        const handleEditSubmit = async ( e ) => {
-            e.preventDefault();
-            setError( {} );
-            setSuccess( false );
 
-            const { operationNumber, amount, description } = depositData;
+    };
 
-            if ( !validateOperationNumber( operationNumber ) ) {
-                setError( ( prevState ) => ( {
-                    ...prevState,
-                    operationNumber: operationNumberValidationMessage,
-                } ) );
-                return;
-            }
+    const handleEditSubmit = async ( e ) => {
+        e.preventDefault();
+        setError( {} );
+        setSuccess( false );
 
-            if ( amount <= 0 ) {
-                setError( ( prevState ) => ( {
-                    ...prevState,
-                    amount: 'El monto debe ser mayor que cero',
-                } ) );
-                return;
-            }
+        const { operationNumber, amount, description } = depositData;
 
-            const editPayload = {
-                operationNumber,
-                amount: parseFloat( amount ),
-                description,
-            };
+        if ( !validateOperationNumber( operationNumber ) ) {
+            setError( ( prevState ) => ( {
+                ...prevState,
+                operationNumber: operationNumberValidationMessage,
+            } ) );
+            return;
+        }
 
-            setLoading( true );
+        if ( amount <= 0 ) {
+            setError( ( prevState ) => ( {
+                ...prevState,
+                amount: 'El monto debe ser mayor que cero',
+            } ) );
+            return;
+        }
 
-            const response = await editDeposit( editPayload );
+        const editPayload = {
+            operationNumber,
+            amount: parseFloat( amount ),
+            description,
+        };
 
-            setLoading( false );
+        setLoading( true );
+
+        const response = await editDeposit( editPayload );
+
+        setLoading( false );
+
+        if ( response.error ) {
+            setError( ( prevState ) => ( {
+                ...prevState,
+                form: 'Error al editar el depósito',
+            } ) );
+        } else {
+            setSuccess( true );
+        }
+    };
+
+    const handleReverseSubmit = async ( e ) => {
+        e.preventDefault();
+        setError( {} );
+        setSuccess( false );
+
+        const { operationNumber } = depositData;
+
+        if ( !validateOperationNumber( operationNumber ) ) {
+            setError( prevState => ( {
+                ...prevState,
+                operationNumber: operationNumberValidationMessage,
+            } ) );
+            return;
+        }
+
+        const reversePayload = {
+            operationNumber,
+        };
+
+        setLoading( true );
+
+        try {
+            console.log( 'Sending reverse deposit request with payload:', reversePayload );
+            const response = await reverseDeposit( reversePayload );
 
             if ( response.error ) {
-                setError( ( prevState ) => ( {
+                setError( prevState => ( {
                     ...prevState,
-                    form: 'Error al editar el depósito',
+                    form: 'Error al revertir el depósito',
                 } ) );
             } else {
                 setSuccess( true );
             }
-        };
+        } catch ( error ) {
+            console.error( 'Error reversing deposit:', error.message );
+            setError( prevState => ( {
+                ...prevState,
+                form: 'Error al revertir el depósito',
+            } ) );
+        } finally {
+            setLoading( false );
+        }
     };
 
     return {
@@ -133,5 +179,7 @@ export const useDeposit = () => {
         handleInputChange,
         handleInputBlur,
         handleSubmit,
+        handleEditSubmit,
+        handleReverseSubmit
     };
 };

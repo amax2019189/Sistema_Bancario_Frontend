@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../../components/Navbar'
 import SectionA from './SectionA'
 import { useUserDetails } from '../../shared/hooks'
-import { DepositForm } from '../deposits/DepositForm'
+import { ParentComponent } from '../deposits/ParentDepositComponent'
 
 
 function HomePage () {
@@ -101,7 +101,7 @@ function HomePage () {
                         </div>
                     </div>
                 </div>
-            </section> ) : ( <DepositForm /> )}
+            </section> ) : ( <ParentComponent /> )}
             <SectionA />
         </>
     )

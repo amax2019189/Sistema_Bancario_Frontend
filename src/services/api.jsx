@@ -66,3 +66,14 @@ export const editDeposit = async ( data ) => {
         }
     }
 }
+
+export const reverseDeposit = async ( data ) => {
+    try {
+        return await apiClient.delete( '/deposit/reverseDeposit', data )
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
