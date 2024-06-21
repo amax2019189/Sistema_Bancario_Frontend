@@ -48,6 +48,8 @@ export const useLogin = () => {
         }
     };
 
+    console.log(localStorage.getItem(userDetails))
+
     return {
         login,
         isLoading,

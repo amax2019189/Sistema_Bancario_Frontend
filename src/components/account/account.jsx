@@ -33,6 +33,9 @@ const AccountDetails = () => {
           <p>
             <strong>Rol:</strong> {userData.roleUser}
           </p>
+          <p>
+            <strong>token:</strong> {userData.token}
+          </p>
           {/* Aquí puedes agregar más campos según la estructura de tu usuario */}
         </div>
       ) : (
