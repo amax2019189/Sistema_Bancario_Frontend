@@ -6,6 +6,7 @@ function HomePage() {
     return (
         <>
             <Navbar />
+            <br />
             <section className="bg-white mb-[65px]">
                 <br />
                 <section className="">
