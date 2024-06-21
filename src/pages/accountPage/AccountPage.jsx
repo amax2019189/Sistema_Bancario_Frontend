@@ -1,13 +1,15 @@
 import React from 'react'
 import AccountDetails from '../../components/account/account'
+import NavbarHome from '../../components/NavbarHome'
+import SectionA from '../homePage/SectionA'
 
-function AccountPage() {
+function AccountPage () {
     return (
         <>
             <NavbarHome />
-            <AccountDetails />
             <section className="bg-white ">
                 <br />
+                <AccountDetails />
                 <section className="">
                     <div className="container mx-auto mb-[5%]">
                         <div className="flex justify-center">

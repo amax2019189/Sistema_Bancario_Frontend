@@ -12,11 +12,11 @@ import { useLogin } from '../../shared/hooks/useLogin';
 import Navbar from "../../components/Navbar";
 import NavbarHome from "../../components/NavbarHome";
 
-export const Login = ({ switchAuthHandler }) => {
+export const Login = ( { switchAuthHandler } ) => {
     const { login, isLoading } = useLogin();
     const navigate = useNavigate();
 
-    const [formState, setFormState] = useState({
+    const [formState, setFormState] = useState( {
         email: {
             value: '',
             isValid: false,
@@ -27,48 +27,48 @@ export const Login = ({ switchAuthHandler }) => {
             isValid: false,
             showError: false,
         }
-    });
+    } );
 
-    const handleInputValueChange = (value, field) => {
-        setFormState((prevState) => ({
+    const handleInputValueChange = ( value, field ) => {
+        setFormState( ( prevState ) => ( {
             ...prevState,
             [field]: {
                 ...prevState[field],
                 value
             }
-        }));
+        } ) );
     };
 
-    const handleInputValidationOnBlur = (value, field) => {
+    const handleInputValidationOnBlur = ( value, field ) => {
         let isValid = false;
-        switch (field) {
+        switch ( field ) {
             case 'email':
-                isValid = validateEmail(value);
+                isValid = validateEmail( value );
                 break;
             case 'password':
-                isValid = validatePassword(value);
+                isValid = validatePassword( value );
                 break;
             default:
                 break;
         }
-        setFormState((prevState) => ({
+        setFormState( ( prevState ) => ( {
             ...prevState,
             [field]: {
                 ...prevState[field],
                 isValid,
                 showError: !isValid
             }
-        }));
+        } ) );
     };
 
-    const handleLogin = async (event) => {
+    const handleLogin = async ( event ) => {
         event.preventDefault();
         try {
-            await login(formState.email.value, formState.password.value);
-            navigate('/Prueba');
+            await login( formState.email.value, formState.password.value );
+            navigate( '/user' );
 
-        } catch (e) {
-            console.error('Error during login: ', e);
+        } catch ( e ) {
+            console.error( 'Error during login: ', e );
         }
 
     };
