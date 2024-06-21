@@ -9,6 +9,8 @@ import {
     validatePassword,
 } from '../../shared/validators';
 import { useLogin } from '../../shared/hooks/useLogin';
+import Navbar from "../../components/Navbar";
+import NavbarHome from "../../components/NavbarHome";
 
 export const Login = ({ switchAuthHandler }) => {
     const { login, isLoading } = useLogin();
@@ -63,7 +65,7 @@ export const Login = ({ switchAuthHandler }) => {
         event.preventDefault();
         try {
             await login(formState.email.value, formState.password.value);
-            navigate('/');
+            navigate('/Prueba');
 
         } catch (e) {
             console.error('Error during login: ', e);

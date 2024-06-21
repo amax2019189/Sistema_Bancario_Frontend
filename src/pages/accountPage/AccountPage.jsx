@@ -1,12 +1,11 @@
 import React from 'react'
-import Navbar from '../../components/Navbar'
-import SectionA from './SectionA'
-import NavbarHome from '../../components/NavbarHome'
+import AccountDetails from '../../components/account/account'
 
-function HomePage() {
+function AccountPage() {
     return (
         <>
             <NavbarHome />
+            <AccountDetails />
             <section className="bg-white ">
                 <br />
                 <section className="">
@@ -41,14 +40,14 @@ function HomePage() {
 
 
                                 {/*
-                                <div className="mt-4 md:mx-4 md:mt-0">
-                                    <h1 className="text-2xl font-semibold text-gray-700 capitalize">Desarrollador</h1>
-                                    <p className="mt-3 text-gray-500 ">
-                                        Me apasiona desarrollar porque cada proyecto es una oportunidad para combinar lógica y creatividad. Disfruto resolver problemas
-                                        con soluciones  eficientes, transformando ideas abstractas en interfaces intuitivas y funcionales. La satisfacción que me queda
-                                        de ver cómo cada línea de código y cada elemento de diseño se unen para crear experiencias digitales unicas para el usuario.
-                                    </p>
-                                </div>*/ }
+                    <div className="mt-4 md:mx-4 md:mt-0">
+                        <h1 className="text-2xl font-semibold text-gray-700 capitalize">Desarrollador</h1>
+                        <p className="mt-3 text-gray-500 ">
+                            Me apasiona desarrollar porque cada proyecto es una oportunidad para combinar lógica y creatividad. Disfruto resolver problemas
+                            con soluciones  eficientes, transformando ideas abstractas en interfaces intuitivas y funcionales. La satisfacción que me queda
+                            de ver cómo cada línea de código y cada elemento de diseño se unen para crear experiencias digitales unicas para el usuario.
+                        </p>
+                    </div>*/ }
 
                             </div>
                             <div className="md:flex md:items-start md:-mx-4">
@@ -107,4 +106,4 @@ function HomePage() {
     )
 }
 
-export default HomePage
+export default AccountPage
