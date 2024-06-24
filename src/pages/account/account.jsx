@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useAccounts from '../../shared/hooks/useAccount'; 
 import { getToken } from '../../services/authUtils'; 
 import { createAccount } from '../../services/api'; 
+import { findRenderedComponentWithType } from 'react-dom/test-utils';
 
 const AccountsPage = () => {
     const _token = localStorage.getItem('user'); 
@@ -24,9 +25,9 @@ const AccountsPage = () => {
 
         try {
 
-            
+           
 
-            await createAccount(formData);
+            await createAccount( formData.dpiNumber, formData.accountType,"");
             // Después de crear la cuenta, refresca la lista de cuentas
             refetchAccounts();
             // Limpia el formulario

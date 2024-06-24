@@ -64,11 +64,20 @@ export const getAccountsUser = async (token) => {
 // Función para crear una nueva cuenta
 export const createAccount = async (dpiNumber, accountType, token) => {
     try {
-
-        console.log({"fromCreateAccount":token});
+        var user = localStorage.getItem("user");
+        var userjson = JSON.parse(user);
         
-        const data = { dpiNumber, accountType };
-        return await apiClient.post('/account/createAccount', data, {
+        token = userjson.token;
+
+        let dpi = dpiNumber.Trim();
+        let acctype = accountType.Trim();
+
+        const data = { dpi, acctype };
+        
+       
+        
+
+        return await apiClient.post('/accounts/createAccount', data, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
