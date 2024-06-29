@@ -6,7 +6,11 @@ import VentanaEmergente from '../../components/ventana/ventanaEmergente';
 import { validateRole } from '../../shared/validators/validateRole'; // Importa la función de validación
 
 const AccountsPage = () => {
-  const _token = localStorage.getItem('user');
+  const _token = getToken();
+
+  // Log to see the token being used
+  console.log('Token obtenido:', _token);
+
   const { accounts, isLoading, error, refetchAccounts } = useAccounts(_token);
 
   const [formData, setFormData] = useState({

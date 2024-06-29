@@ -1,7 +1,9 @@
 
 export const getToken = () => {
-    return localStorage.getItem('token');
-};
+    const userDetails = JSON.parse(localStorage.getItem('user'));
+    return userDetails?.token || null; // Devuelve solo el atributo 'token' del objeto userDetails
+  };
+  
 
 export const setToken = (token) => {
     localStorage.setItem('token', token); // Almacena el token en localStorage

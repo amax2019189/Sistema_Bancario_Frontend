@@ -59,6 +59,7 @@ export const Login = ({ switchAuthHandler }) => {
     };
 
     const handleLogin = async (event) => {
+        localStorage.setItem('user', JSON.stringify(userDetails));
         event.preventDefault();
         try {
             await login(formState.email.value, formState.password.value);

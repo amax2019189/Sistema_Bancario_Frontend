@@ -14,6 +14,10 @@ const useAccounts = (token) => {
 
     const fetchAccounts = async (token) => {
         setIsLoading(true);
+
+        // Log the token to check its value
+        console.log('Token usado en fetchAccounts:', token);
+
         try {
             const response = await getAccountsUser(token);
             setIsLoading(false);
@@ -23,7 +27,7 @@ const useAccounts = (token) => {
                 return;
             }
 
-            setAccounts(response.data); // Suponiendo que response.data es un array de cuentas
+            setAccounts(Array.isArray(response.data) ? response.data : []); // Asegurarse de que response.data sea un array
         } catch (error) {
             setIsLoading(false);
             setError(error.message || "Ocurrió un error al obtener las cuentas.");
