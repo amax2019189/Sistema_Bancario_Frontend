@@ -10,3 +10,8 @@ export const setToken = (token) => {
 export const removeToken = () => {
     localStorage.removeItem('token'); // Remueve el token de localStorage
 };
+
+export const getUserRole = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user?.role || null; // Devuelve el rol del usuario o null si no existe
+  };
