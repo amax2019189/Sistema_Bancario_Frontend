@@ -64,20 +64,12 @@ export const getAccountsUser = async (token) => {
 // Función para crear una nueva cuenta
 export const createAccount = async (dpiNumber, accountType, token) => {
     try {
-        var user = localStorage.getItem("user");
-        var userjson = JSON.parse(user);
-        
-        token = userjson.token;
+        const data = { dpiNumber, accountType };
 
-        let dpi = dpiNumber.Trim();
-        let acctype = accountType.Trim();
+        // Log the data being sent to the API
+        console.log('Datos enviados a la API para crear cuenta:', data);
 
-        const data = { dpi, acctype };
-        
-       
-        
-
-        return await apiClient.post('/accounts/createAccount', data, {
+        return await apiClient.post('/account/createAccount', data, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -91,10 +83,10 @@ export const createAccount = async (dpiNumber, accountType, token) => {
 };
 
 // Función para desactivar una cuenta
-export const deactivateAccount = async (noAccount, dpi, token) => {
+export const deactivateAccount = async (noAccount, token) => {
     try {
-        const data = { noAccount, dpi };
-        return await apiClient.delete('/accounts/deleteAccount', {
+        const data = { noAccount };
+        return await apiClient.delete('/account/deleteAccount', {
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -109,10 +101,10 @@ export const deactivateAccount = async (noAccount, dpi, token) => {
 };
 
 // Función para activar una cuenta
-export const activateAccount = async (noAccount, dpi, token) => {
+export const activateAccount = async (noAccount, token) => {
     try {
-        const data = { noAccount, dpi };
-        return await apiClient.put('/accounts/activateAccount', data, {
+        const data = { noAccount };
+        return await apiClient.put('/account/activateAccount', data, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

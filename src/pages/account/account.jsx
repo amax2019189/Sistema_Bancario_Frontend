@@ -30,8 +30,12 @@ const AccountsPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Log the data being sent to createAccount
+    console.log('Datos enviados para crear cuenta:', formData);
+
     try {
-      await createAccount(formData.dpiNumber, formData.accountType, "");
+      await createAccount(formData.dpiNumber.trim(), formData.accountType.trim(), _token);
       refetchAccounts();
       setFormData({
         dpiNumber: '',
@@ -62,9 +66,9 @@ const AccountsPage = () => {
       }
 
       if (modalAction === 'deactivate') {
-        await deactivateAccount(selectedAccount._id);
+        await deactivateAccount(selectedAccount._id, _token);
       } else if (modalAction === 'activate') {
-        await activateAccount(selectedAccount._id);
+        await activateAccount(selectedAccount._id, _token);
       }
       closeModal();
       refetchAccounts();
