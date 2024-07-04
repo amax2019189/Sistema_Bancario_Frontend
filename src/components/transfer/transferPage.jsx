@@ -25,7 +25,7 @@ const TransferPage = () => {
   );
 };
 
-export default TransferPage;
+//export default TransferPage;
 
 import React, { useState } from 'react';
 
