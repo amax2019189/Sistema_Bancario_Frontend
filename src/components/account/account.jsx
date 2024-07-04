@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 
 const AccountDetails = () => {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState( null );
 
-  useEffect(() => {
+  useEffect( () => {
     // Función para obtener los datos del usuario desde localStorage
     const getUserDataFromLocalStorage = () => {
-      const user = localStorage.getItem("user");
-      if (user) {
-        const parsedUser = JSON.parse(user);
-        setUserData(parsedUser);
+      const user = localStorage.getItem( "user" );
+      if ( user ) {
+        const parsedUser = JSON.parse( user );
+        setUserData( parsedUser );
       }
     };
 
     getUserDataFromLocalStorage();
-  }, []); // Se ejecuta solo una vez al montar el componente
+  }, [] ); // Se ejecuta solo una vez al montar el componente
 
   return (
     <div id="body" className="bg-slate-50 h-screen flex">
@@ -69,7 +69,7 @@ const AccountDetails = () => {
         {userData ? (
           <div className="bg-white p-8 shadow-2xl rounded-lg max-w-lg mx-auto">
             <div className="flex flex-col items-center mb-6">
-              <img src="../src/assets/imgLogoReales.jpg" alt="User Avatar" className="w-[18rem] h-[18rem] rounded-full border-4 border-gray-300 mb-4" />
+              <img src="https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png" alt="User Avatar" className="w-[18rem] h-[18rem] rounded-full border-4 border-gray-300 mb-4" />
               <p className="text-2xl font-semibold text-gray-900">
                 {userData.name} {userData.lastname}
               </p>
@@ -89,7 +89,7 @@ const AccountDetails = () => {
                 <span className="font-semibold text-gray-900">Fecha de nacimiento:</span> {userData.dob}
               </p>
               <p className="text-xl text-gray-700">
-                <span className="font-semibold text-gray-900">Bio:</span> {userData.bio}
+                <span className="font-semibold text-gray-900">Email:</span> {userData.email}
               </p>
             </div>
           </div>
