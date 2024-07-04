@@ -36,7 +36,7 @@ const AccountDetails = () => {
           {/* Aquí puedes agregar más campos según la estructura de tu usuario */}
         </div>
       ) : (
-        <p>Cargando datos del usuario...</p>
+        <p>Error al iniciar sesion de usuario...</p>
       )}
     </div>
   );
