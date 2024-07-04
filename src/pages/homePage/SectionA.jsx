@@ -29,7 +29,7 @@ function SectionA() {
                             </div>
                             <h2 className="text-xl font-medium title-font text-white mt-5">Divisas</h2>
                             <p className="text-base leading-relaxed mt-2">
-                                Swag shoindxgoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO lumbersexual.
+                                Swag shoindxgoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO.
                             </p>
                             <a className="text-indigo-400 inline-flex items-center mt-3">
                                 Learn More
@@ -52,7 +52,7 @@ function SectionA() {
                             </div>
                             <h2 className="text-xl font-medium title-font text-white mt-5">Transferencias</h2>
                             <p className="text-base leading-relaxed mt-2">
-                                Swag shoindxigoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO lumbersexual.
+                                Swag shoindxigoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO.
                             </p>
                             <a className="text-indigo-400 inline-flex items-center mt-3">
                                 Learn More
@@ -75,7 +75,7 @@ function SectionA() {
                             </div>
                             <h2 className="text-xl font-medium title-font text-white mt-5">Estados de cuenta</h2>
                             <p className="text-base leading-relaxed mt-2">
-                                Swag shoindegoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO lumbersexual.
+                                Swag shoindegoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO.
                             </p>
                             <a className="text-indigo-400 inline-flex items-center mt-3">
                                 Learn More

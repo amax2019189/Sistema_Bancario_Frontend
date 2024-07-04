@@ -6,31 +6,30 @@ import NavbarHome from '../NavbarHome'
 import SectionA from "../../pages/homePage/SectionA";
 
 export const ParentComponent = () => {
-    const [showDepositForm, setShowDepositForm] = useState( false );
-    const [showEditForm, setShowEditForm] = useState( false );
-    const [showReverseForm, setShowReverseForm] = useState( false )
+    const [showDepositForm, setShowDepositForm] = useState(false);
+    const [showEditForm, setShowEditForm] = useState(false);
+    const [showReverseForm, setShowReverseForm] = useState(false)
 
     const toggleDepositForm = () => {
-        setShowDepositForm( !showDepositForm );
-        setShowEditForm( false ); // Ensure only one form is shown at a time
-        setShowReverseForm( false )
+        setShowDepositForm(!showDepositForm);
+        setShowEditForm(false); // Ensure only one form is shown at a time
+        setShowReverseForm(false)
     };
 
     const toggleEditForm = () => {
-        setShowEditForm( !showEditForm );
-        setShowDepositForm( false ); // Ensure only one form is shown at a time
-        setShowReverseForm( false )
+        setShowEditForm(!showEditForm);
+        setShowDepositForm(false); // Ensure only one form is shown at a time
+        setShowReverseForm(false)
     };
 
     const toggleReverseForm = () => {
-        setShowReverseForm( !showReverseForm );
-        setShowDepositForm( false ); // Ensure only one form is shown at a time
-        setShowEditForm( false );
+        setShowReverseForm(!showReverseForm);
+        setShowDepositForm(false); // Ensure only one form is shown at a time
+        setShowEditForm(false);
     };
 
     return (
         <>
-            <NavbarHome />
             <div className="mt-16 p-4">
 
                 <button
@@ -58,7 +57,6 @@ export const ParentComponent = () => {
                 {showReverseForm && <ReverseDepositForm />}
 
             </div>
-            <SectionA />
 
         </>
     );
