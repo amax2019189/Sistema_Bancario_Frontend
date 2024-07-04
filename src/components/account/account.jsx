@@ -44,7 +44,7 @@ const AccountDetails = () => {
               <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href={"/MyAccount"}>Mi cuenta</a>
             </li>
             <li>
-              <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Depositos</a>
+              <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href={"/deposits"}>Depositos</a>
             </li>
             <li>
               <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Transferencias</a>
