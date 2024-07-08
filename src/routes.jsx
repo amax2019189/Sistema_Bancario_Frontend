@@ -5,6 +5,7 @@ import Prueba from './pages/prueba/prueba.jsx';
 import AccountPage from './pages/accountPage/AccountPage.jsx';
 import { ParentComponent } from './components/deposits/ParentDepositComponent.jsx';
 import AccountDetails from './components/account/account.jsx';
+import Convertidor from './components/convertidor/Convertidor.jsx';
 
 // Routes
 const routes = [
@@ -15,6 +16,7 @@ const routes = [
     { path: '/user', element: <AccountPage /> },
     { path: '/deposits', element: <ParentComponent /> },
     { path: '/myAccount', element: <AccountDetails /> },
+    { path: '/conversor', element: <Convertidor /> },
 
 
 ];
