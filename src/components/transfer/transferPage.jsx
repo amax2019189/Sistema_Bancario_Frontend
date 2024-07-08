@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
-import TransferForm from './TransferForm';
-import useTransfer from '../hooks/useTransfer';
+
+import useTransfer from '../../shared/hooks/useTransfer';
 
 // Declara el componente funcional TransferPage
 const TransferPage = () => {
   // Usa el hook useTransfer para obtener las funciones y variables necesarias para la transferencia
   const { makeTransfer, loading, error } = useTransfer();
   // Usa el hook useState para manejar el mensaje de éxito de la transferencia
-  const [successMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState( '' );
 
   // Declara una función asíncrona handleTransfer que se encarga de realizar la transferencia
-  const handleTransfer = async (transferData) => {
+  const handleTransfer = async ( transferData ) => {
     try {
       // Intenta realizar la transferencia usando la función makeTransfer
-      const result = await makeTransfer(transferData);
+      const result = await makeTransfer( transferData );
       // Si la transferencia es exitosa, actualiza el mensaje de éxito
-      setSuccessMessage('Transferencia realizada exitosamente');
-    } catch (err) {
+      setSuccessMessage( 'Transferencia realizada exitosamente' );
+    } catch ( err ) {
       // El error ya se maneja en el hook useTransfer
     }
   };
@@ -43,32 +42,32 @@ const TransferPage = () => {
 import React, { useState } from 'react';
 
 // Declara el componente funcional TransferForm que recibe las props onSubmit e isLoading
-const TransferForm = ({ onSubmit, isLoading }) => {
+const TransferForm = ( { onSubmit, isLoading } ) => {
   // Usa el hook useState para manejar los datos del formulario
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState( {
     accountNumberOrigen: '',
     accountNumberDestino: '',
     amount: '',
     description: '',
     saveAsFavorite: false,
     alias: ''
-  });
+  } );
 
   // Declara una función handleChange para manejar los cambios en los campos del formulario
-  const handleChange = (e) => {
+  const handleChange = ( e ) => {
     const { name, value, type, checked } = e.target;
     // Actualiza el estado del formulario según el campo que se haya modificado
-    setFormData(prevState => ({
+    setFormData( prevState => ( {
       ...prevState,
       [name]: type === 'checkbox' ? checked : value
-    }));
+    } ) );
   };
 
   // Declara una función handleSubmit para manejar el envío del formulario
-  const handleSubmit = (e) => {
+  const handleSubmit = ( e ) => {
     e.preventDefault();
     // Llama a la función onSubmit pasada como prop con los datos del formulario
-    onSubmit(formData);
+    onSubmit( formData );
   };
 
   // Retorna el JSX que representa el formulario de transferencia

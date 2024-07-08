@@ -8,24 +8,36 @@ import { ReverseDepositForm } from '../../components/deposits/ReverseDepositForm
 import { ParentComponent } from '../../components/deposits/ParentDepositComponent';
 import AccountSection from './AccountSection';
 import ButtonBanck from '../../components/ButtonBanck';
+import { useUserDetails } from '../../shared/hooks';
 
-
+const NavButton = ( { text, id, onClickHandler } ) => {
+    return (
+        <span className="nav-button" id={id} onClick={() => onClickHandler( id )} style={{ color: 'white', cursor: 'pointer' }}>
+            {text}
+        </span >
+    );
+};
 
 const AccountPage = () => {
-    const [userData, setUserData] = useState(null);
+    const [userData, setUserData] = useState( null );
+    const { isLogged, logout } = useUserDetails()
 
-    useEffect(() => {
+    const handleLogout = () => {
+        logout()
+    }
+
+    useEffect( () => {
         // Función para obtener los datos del usuario desde localStorage
         const getUserDataFromLocalStorage = () => {
-            const user = localStorage.getItem("user");
-            if (user) {
-                const parsedUser = JSON.parse(user);
-                setUserData(parsedUser);
+            const user = localStorage.getItem( "user" );
+            if ( user ) {
+                const parsedUser = JSON.parse( user );
+                setUserData( parsedUser );
             }
         };
 
         getUserDataFromLocalStorage();
-    }, []); // Se ejecuta solo una vez al montar el componente    return (
+    }, [] ); // Se ejecuta solo una vez al montar el componente    return (
     return (
         <>
             <div id="body" className="bg-slate-50 h-screen flex">
@@ -58,17 +70,19 @@ const AccountPage = () => {
                                 <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href={"/deposits"}>Depositos</a>
                             </li>
                             <li>
-                                <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Transferencias</a>
+                                <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="/transfer">Transferencias</a>
                             </li>
                             <li>
-                                <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Conversor de divisas</a>
+                                <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="/conversor">Conversor de divisas</a>
                             </li>
                             <li>
                                 <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Contact</a>
                             </li>
-                            <li>
+                            {isLogged ? ( <li>
+                                <div><NavButton id='logout' text='LogOut' onClickHandler={handleLogout} /></div>
+                            </li> ) : ( <li>
                                 <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Logout</a>
-                            </li>
+                            </li> )}
 
                         </ul></div>
 
