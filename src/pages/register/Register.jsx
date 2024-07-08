@@ -47,6 +47,26 @@ export const Register = ({ switchAuthHandler }) => {
             isValid: false,
             showError: false,
         },
+        address: {
+            value: '',
+            isValid: false,
+            showError: false
+        },
+        namework: {
+            value: '',
+            isValid: false,
+            showError: false
+        },
+        monthlyincome: {
+            value: '',
+            isValid: false,
+            showError: false
+        },
+        username: {
+            value: '',
+            isValid: false,
+            showError: false
+        },
         email: {
             value: '',
             isValid: false,
