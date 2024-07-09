@@ -13,11 +13,11 @@ import {
     validateLastName,
     lastNameValidationMessage,
     validateName,
-    nameValidationMessage,
     validateDPI,
     dpiValidationMessage,
     validateNumberCel,
-    numberValidationMessage
+    numberValidationMessage,
+    nameValidationMessage
 } from '../../shared/validators'
 import { useRegister } from "../../shared/hooks/useRegister"
 import { useNavigate } from 'react-router-dom'
@@ -114,6 +114,18 @@ export const Register = ({ switchAuthHandler }) => {
             case 'numbercel':
                 isValid = validateNumberCel(value)
                 break
+            case 'address':
+                isValid = validateAddress(value)
+                break
+            case 'namework':
+                isValid = validateName(value)
+                break
+            case 'monthlyincome': 
+                isValid = validateMonthlyIncome(value)
+                break
+            case 'username':
+                isValid = validateUsername(value)
+                break
             case 'password':
                 isValid = validatePassword(value)
                 break
@@ -143,7 +155,11 @@ export const Register = ({ switchAuthHandler }) => {
                 formState.lastName.value,
                 formState.password.value,
                 formState.dpi.value,
-                formState.numbercel.value
+                formState.numbercel.value,
+                formState.address.value,
+                formState.namework.value,
+                formState.monthlyincome.value,
+                formState.username.value
             );
             navigate('/auth');
             switchAuthHandler();
@@ -161,6 +177,9 @@ export const Register = ({ switchAuthHandler }) => {
         !formState.lastName.isValid ||
         !formState.dpi.isValid ||
         !formState.numbercel.isValid ||
+        !formState.address.isValid ||
+        !formState.namework.isValid ||
+        !formState.monthlyincome.isValid ||
         !formState.password.isValid ||
         !formState.passwordConfir.isValid
 
@@ -246,6 +265,57 @@ export const Register = ({ switchAuthHandler }) => {
                                     showErrorMessage={formState.numbercel.showError}
                                     validationMessage={numberValidationMessage}
                                     placeholder={"12345678"}
+                                />
+                            </div>
+                            <div className="flex items-center border-2 mb-12 py-2 px-3 rounded-2xl ">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                                </svg>
+                                <Input
+                                    className="input-field"
+                                    field='address'
+
+                                    value={formState.address.value}
+                                    onChangeHandler={handleInputValueChange}
+                                    type='text'
+                                    onBlurHandler={handleInputValidationOnBlur}
+                                    showErrorMessage={formState.address.showError}
+                                    validationMessage={dpiValidationMessage}
+                                    placeholder={"0 calle 0-0 zona 0"}
+                                />
+                            </div>
+                            <div className="flex items-center border-2 mb-12 py-2 px-3 rounded-2xl ">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                                </svg>
+                                <Input
+                                    className="input-field"
+                                    field='namework'
+
+                                    value={formState.namework.value}
+                                    onChangeHandler={handleInputValueChange}
+                                    type='text'
+                                    onBlurHandler={handleInputValidationOnBlur}
+                                    showErrorMessage={formState.namework.showError}
+                                    validationMessage={dpiValidationMessage}
+                                    placeholder={"Empresa"}
+                                />
+                            </div>
+                            <div className="flex items-center border-2 mb-12 py-2 px-3 rounded-2xl ">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                                </svg>
+                                <Input
+                                    className="input-field"
+                                    field='monthlyincome'
+
+                                    value={formState.monthlyincome.value}
+                                    onChangeHandler={handleInputValueChange}
+                                    type='text'
+                                    onBlurHandler={handleInputValidationOnBlur}
+                                    showErrorMessage={formState.monthlyincome.showError}
+                                    validationMessage={dpiValidationMessage}
+                                    placeholder={"100.00"}
                                 />
                             </div>
                             <div className="flex items-center border-2 mb-12 py-2 px-3 rounded-2xl ">
