@@ -1,22 +1,23 @@
 import React from 'react'
 import Navbar from '../../components/Navbar'
 import SectionA from './SectionA'
+import NavbarHome from '../../components/NavbarHome'
 
 function HomePage() {
     return (
         <>
-            <Navbar />
-            <section className="bg-white mb-[65px]">
+            <NavbarHome />
+            <section className="bg-white ">
                 <br />
                 <section className="">
-                    <div className="container mx-auto">
+                    <div className="container mx-auto mb-[5%]">
                         <div className="flex justify-center">
                         </div>
                     </div>
                 </section>
                 <div className="container px-6 py-10 mx-auto">
                     <div className="lg:flex lg:items-center">
-                        <div className="w-full space-y-12 lg:w-1/2 ">
+                        <div className="w-full space-y-12 lg:w-1/2 mt-6">
                             <div>
                                 <h1 className="text-2xl font-semibold text-gray-800  lg:text-4xl ">Bienvenido<br /> Sistema crediticio</h1>
                                 <div className="mt-2">
@@ -96,8 +97,11 @@ function HomePage() {
 
                         </div>
                     </div>
+
                 </div>
+
             </section>
+
             <SectionA />
         </>
     )

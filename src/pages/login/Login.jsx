@@ -1,19 +1,19 @@
-/* eslint-disable react/prop-types */
-import { useState } from "react"
-import { Input } from '../../components/input/Input'
-import { useNavigate } from "react-router-dom"
+
+import { useState } from "react";
+import { Input } from '../../components/input/Input';
+import { useNavigate } from "react-router-dom";
 import {
     emailValidationMessage,
     validateEmail,
     validatePasswordMessage,
     validatePassword,
-
-} from '../../shared/validators'
-import { useLogin } from '../../shared/hooks/useLogin'
-
+} from '../../shared/validators';
+import { useLogin } from '../../shared/hooks/useLogin';
+import Navbar from "../../components/Navbar";
+import NavbarHome from "../../components/NavbarHome";
 
 export const Login = ( { switchAuthHandler } ) => {
-    const { login, isLoading } = useLogin()
+    const { login, isLoading } = useLogin();
     const navigate = useNavigate();
 
     const [formState, setFormState] = useState( {
@@ -27,7 +27,7 @@ export const Login = ( { switchAuthHandler } ) => {
             isValid: false,
             showError: false,
         }
-    } )
+    } );
 
     const handleInputValueChange = ( value, field ) => {
         setFormState( ( prevState ) => ( {
@@ -36,20 +36,20 @@ export const Login = ( { switchAuthHandler } ) => {
                 ...prevState[field],
                 value
             }
-        } ) )
-    }
+        } ) );
+    };
 
     const handleInputValidationOnBlur = ( value, field ) => {
-        let isValid = false
+        let isValid = false;
         switch ( field ) {
             case 'email':
-                isValid = validateEmail( value )
-                break
+                isValid = validateEmail( value );
+                break;
             case 'password':
-                isValid = validatePassword( value )
-                break
+                isValid = validatePassword( value );
+                break;
             default:
-                break
+                break;
         }
         setFormState( ( prevState ) => ( {
             ...prevState,
@@ -58,23 +58,22 @@ export const Login = ( { switchAuthHandler } ) => {
                 isValid,
                 showError: !isValid
             }
-        } ) )
-    }
+        } ) );
+    };
 
     const handleLogin = async ( event ) => {
         event.preventDefault();
         try {
-            await login( formState.email.value, formState.password.value )
-            navigate( '/' )
+            await login( formState.email.value, formState.password.value );
+            navigate( '/user' );
 
         } catch ( e ) {
-            console.error( 'Error during login: ', e )
+            console.error( 'Error during login: ', e );
         }
 
     };
 
-    const isSubmitButtonDisabled = isLoading || !formState.email.isValid || !formState.password.isValid
-
+    const isSubmitButtonDisabled = isLoading || !formState.email.isValid || !formState.password.isValid;
 
     return (
         <>
@@ -86,12 +85,12 @@ export const Login = ( { switchAuthHandler } ) => {
               }
             `}
             </style>
-            <div className="h-screen flex bg-gray-200 h-screen flex justify-center" id="conteinerLog">
+            <div className="h-screen flex bg-gray-200  justify-center" id="conteinerLog">
                 <div className="hidden lg:flex w-full lg:w-1/2 login_img_section justify-around items-center">
                     <div className="bg-black opacity-20 inset-0 z-0" />
 
                     <div className="w-full mx-auto px-20 flex-col items-center space-y-6">
-                        <h1 className="text-white font-bold text-4xl font-sans">Inicia sesion</h1>
+                        <h1 className="text-white font-bold text-4xl font-sans">Inicia sesión</h1>
                         <p className="text-white mt-1">Sistema Crediticio</p>
                         <div className="flex justify-center lg:justify-start mt-6">
                             <a href="/login" className="hover:bg-indigo-700 hover:text-white hover:-translate-y-1 transition-all duration-500 bg-white text-indigo-800 mt-4 px-4 py-2 rounded-2xl font-bold mb-2">Regresar a inicio</a>
@@ -137,7 +136,7 @@ export const Login = ( { switchAuthHandler } ) => {
                                 onClick={handleLogin} disabled={isSubmitButtonDisabled} id="signUp">Login</button>
                             <div className="flex justify-between mt-4">
                                 <button id="signIn" onClick={switchAuthHandler}>
-                                    <a href="/register" className="bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 transform hover:translate-x-5">¿No tienes una cuenta? Haz click aqui</a>
+                                    <a href="/register" className="bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 transform hover:translate-x-5">¿No tienes una cuenta? Haz click aquí</a>
                                 </button>
                             </div>
                         </form>
@@ -146,4 +145,4 @@ export const Login = ( { switchAuthHandler } ) => {
             </div>
         </>
     );
-}
+};
