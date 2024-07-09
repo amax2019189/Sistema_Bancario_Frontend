@@ -1,6 +1,6 @@
 import './Input.css'
 
-export const Input = ({
+export const Input = ( {
     field,
     label,
     value,
@@ -11,14 +11,14 @@ export const Input = ({
     onBlurHandler,
     textarea,
     placeholder,
-    className 
-}) => {
-    const handleValueChange = (event) => {
-        onChangeHandler(event.target.value, field)
+    className = 'border-zinc-950',
+} ) => {
+    const handleValueChange = ( event ) => {
+        onChangeHandler( event.target.value, field )
     }
 
-    const handleInputBlur = (event) => {
-        onBlurHandler(event.target.value, field)
+    const handleInputBlur = ( event ) => {
+        onBlurHandler( event.target.value, field )
     }
 
     return (
