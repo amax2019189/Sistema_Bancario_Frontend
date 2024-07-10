@@ -10,34 +10,35 @@ import AccountSection from './AccountSection';
 import ButtonBanck from '../../components/ButtonBanck';
 import { useUserDetails } from '../../shared/hooks';
 
-const NavButton = ( { text, id, onClickHandler } ) => {
+const NavButton = ({ text, id, onClickHandler }) => {
     return (
-        <span className="nav-button" id={id} onClick={() => onClickHandler( id )} style={{ color: 'white', cursor: 'pointer' }}>
+        <span className="nav-button" id={id} onClick={() => onClickHandler(id)} style={{ color: 'white', cursor: 'pointer' }}>
             {text}
-        </span >
+        </span>
     );
 };
 
 const AccountPage = () => {
-    const [userData, setUserData] = useState( null );
-    const { isLogged, logout } = useUserDetails()
+    const [userData, setUserData] = useState(null);
+    const { isLogged, logout } = useUserDetails();
 
     const handleLogout = () => {
-        logout()
-    }
+        logout();
+    };
 
-    useEffect( () => {
+    useEffect(() => {
         // Función para obtener los datos del usuario desde localStorage
         const getUserDataFromLocalStorage = () => {
-            const user = localStorage.getItem( "user" );
-            if ( user ) {
-                const parsedUser = JSON.parse( user );
-                setUserData( parsedUser );
+            const user = localStorage.getItem("user");
+            if (user) {
+                const parsedUser = JSON.parse(user);
+                setUserData(parsedUser);
             }
         };
 
         getUserDataFromLocalStorage();
-    }, [] ); // Se ejecuta solo una vez al montar el componente    return (
+    }, []); // Se ejecuta solo una vez al montar el componente
+
     return (
         <>
             <div id="body" className="bg-slate-50 h-screen flex">
@@ -78,17 +79,19 @@ const AccountPage = () => {
                             <li>
                                 <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Contact</a>
                             </li>
-                            {isLogged ? ( <li>
-                                <div><NavButton id='logout' text='LogOut' onClickHandler={handleLogout} /></div>
-                            </li> ) : ( <li>
-                                <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Logout</a>
-                            </li> )}
-
-                        </ul></div>
-
+                            {isLogged ? (
+                                <li>
+                                    <div><NavButton id='logout' text='LogOut' onClickHandler={handleLogout} /></div>
+                                </li>
+                            ) : (
+                                <li>
+                                    <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Logout</a>
+                                </li>
+                            )}
+                        </ul>
+                    </div>
                 </nav>
                 <div className="right w-full flex gap-2 flex-col ml-80">
-
                     <section className="bg-white">
                         <AccountSection />
                         <br />
@@ -100,7 +103,6 @@ const AccountPage = () => {
                         </section>
                         <div className="container px-6 py-10 mx-auto">
                             <div className="lg:flex lg:items-center">
-
                                 <div className="flex">
                                     <div className="mt-[25px] w-full ml-[10rem] max-[1000px]:mx-[auto]">
                                         <div className="mt-[auto]">
@@ -120,8 +122,7 @@ const AccountPage = () => {
             </div>
             <ButtonBanck />
         </>
-
     );
 };
 
-export default AccountPage
+export default AccountPage;
