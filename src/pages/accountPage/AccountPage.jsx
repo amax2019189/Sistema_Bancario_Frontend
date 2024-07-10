@@ -1,7 +1,7 @@
-import AccountDetails from '../../components/account/account'
-import NavbarHome from '../../components/NavbarHome'
-import SectionA from '../homePage/SectionA'
-import Navbar from '../../components/Navbar'
+import AccountDetails from '../../components/account/account';
+import NavbarHome from '../../components/NavbarHome';
+import SectionA from '../homePage/SectionA';
+import Navbar from '../../components/Navbar';
 import React, { useEffect, useState } from "react";
 import { DepositForm } from '../../components/deposits/DepositForm';
 import { ReverseDepositForm } from '../../components/deposits/ReverseDepositForm';
@@ -9,6 +9,7 @@ import { ParentComponent } from '../../components/deposits/ParentDepositComponen
 import AccountSection from './AccountSection';
 import ButtonBanck from '../../components/ButtonBanck';
 import { useUserDetails } from '../../shared/hooks';
+import useAutoLogout from '../../shared/hooks/useAutoLogout'; // Ajusta la ruta según tu estructura de proyecto
 
 const NavButton = ({ text, id, onClickHandler }) => {
     return (
@@ -26,8 +27,9 @@ const AccountPage = () => {
         logout();
     };
 
+    useAutoLogout(); // Inicializa el hook para el auto logout
+
     useEffect(() => {
-        // Función para obtener los datos del usuario desde localStorage
         const getUserDataFromLocalStorage = () => {
             const user = localStorage.getItem("user");
             if (user) {
@@ -37,7 +39,7 @@ const AccountPage = () => {
         };
 
         getUserDataFromLocalStorage();
-    }, []); // Se ejecuta solo una vez al montar el componente
+    }, []); 
 
     return (
         <>
@@ -51,13 +53,11 @@ const AccountPage = () => {
                                 <span className="font-semibold text-lg text-emerald-700 text-[28px] uppercase">{userData.name}</span>
                                 <span className="text-white text-[20px]">{userData.email}</span>
                                 <span className="font-semibold text-slate-500">{userData.rolerUser} </span>
-
                             </div>
-                            <div className="text-sm text-white">
-                            </div>
+                            <div className="text-sm text-white"></div>
                         </div>
                     ) : (
-                        <p>Error al iniciar sesion de usuario...</p>
+                        <p>Error al iniciar sesión de usuario...</p>
                     )}
                     <div className='bg-cyan-600 w-full h-full '>
                         <ul className="px-[4rem] space-y-6  rounded-lg mt-[3rem]">
@@ -79,14 +79,14 @@ const AccountPage = () => {
                             <li>
                                 <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Contact</a>
                             </li>
-                            {isLogged ? (
+                            {isLogged ? ( 
                                 <li>
                                     <div><NavButton id='logout' text='LogOut' onClickHandler={handleLogout} /></div>
-                                </li>
-                            ) : (
+                                </li> 
+                            ) : ( 
                                 <li>
                                     <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Logout</a>
-                                </li>
+                                </li> 
                             )}
                         </ul>
                     </div>
@@ -97,8 +97,7 @@ const AccountPage = () => {
                         <br />
                         <section className="">
                             <div className="container mx-auto mb-[-12%]">
-                                <div className="flex justify-center">
-                                </div>
+                                <div className="flex justify-center"></div>
                             </div>
                         </section>
                         <div className="container px-6 py-10 mx-auto">
