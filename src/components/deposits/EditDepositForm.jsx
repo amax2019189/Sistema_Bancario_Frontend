@@ -14,9 +14,9 @@ export const EditDepositForm = () => {
     } = useDeposit();
 
     return (
-        <div>
+        <div className="max-w-xl mx-auto p-8 bg-white rounded-lg shadow-md">
             <form onSubmit={handleEditSubmit}>
-                <h1>Editar Depósito</h1>
+                <h1 className="text-2xl font-bold mb-6">Editar Depósito</h1>
                 <Input
                     field="operationNumber"
                     label="Número de Operación"
@@ -26,6 +26,7 @@ export const EditDepositForm = () => {
                     showErrorMessage={!!error.operationNumber}
                     validationMessage={error.operationNumber}
                     onBlurHandler={handleInputBlur}
+                    className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <Input
                     field="amount"
@@ -36,6 +37,7 @@ export const EditDepositForm = () => {
                     showErrorMessage={!!error.amount}
                     validationMessage={error.amount}
                     onBlurHandler={handleInputBlur}
+                    className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <Input
                     field="description"
@@ -48,14 +50,18 @@ export const EditDepositForm = () => {
                     onBlurHandler={handleInputBlur}
                     textarea={true}
                     placeholder="Opcional"
+                    className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {error.form && <div style={{ color: 'red' }}>{error.form}</div>}
-                {success && <div style={{ color: 'green' }}>Depósito editado con éxito</div>}
-                <button type="submit" disabled={loading}>
+                {error.form && <div className="text-red-500 mb-4">{error.form}</div>}
+                {success && <div className="text-green-500 mb-4">Depósito editado con éxito</div>}
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full p-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 disabled:opacity-50"
+                >
                     {loading ? 'Procesando...' : 'Editar Depósito'}
                 </button>
             </form>
         </div>
-
     );
 };

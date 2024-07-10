@@ -14,8 +14,8 @@ export const DepositForm = () => {
     } = useDeposit();
 
     return (
-        <div>
-            <h1>Realizar Depósito</h1>
+        <div className="max-w-xl mx-auto p-8 bg-white rounded-lg shadow-md">
+            <h1 className="text-2xl font-bold mb-6">Realizar Depósito</h1>
             <form onSubmit={handleSubmit}>
                 <Input
                     field="accountNumber"
@@ -27,6 +27,7 @@ export const DepositForm = () => {
                     validationMessage={error.accountNumber}
                     onBlurHandler={handleInputBlur}
                     placeholder="9876543210"
+                    className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <Input
                     field="amount"
@@ -38,6 +39,7 @@ export const DepositForm = () => {
                     validationMessage={error.amount}
                     onBlurHandler={handleInputBlur}
                     placeholder="123.45"
+                    className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <Input
                     field="description"
@@ -50,24 +52,27 @@ export const DepositForm = () => {
                     onBlurHandler={handleInputBlur}
                     textarea={true}
                     placeholder="Opcional"
+                    className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                <div className="input-label my-input-class">
-                    <span>Tipo de Cambio</span>
-                </div>
-                <div className="input-field my-input-class">
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-bold mb-2">Tipo de Cambio</label>
                     <select
-                        className="input-input my-input-class"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         name="exchangeRate"
                         value={depositData.exchangeRate}
-                        onChange={( e ) => handleInputChange( e.target.value, 'exchangeRate' )}
+                        onChange={(e) => handleInputChange(e.target.value, 'exchangeRate')}
                     >
                         <option value="quetzales">Quetzales</option>
                         <option value="dolares">Dólares</option>
                     </select>
                 </div>
-                {error.form && <div style={{ color: 'red' }}>{error.form}</div>}
-                {success && <div style={{ color: 'green' }}>Depósito realizado con éxito</div>}
-                <button type="submit" disabled={loading}>
+                {error.form && <div className="text-red-500 mb-4">{error.form}</div>}
+                {success && <div className="text-green-500 mb-4">Depósito realizado con éxito</div>}
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full p-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 disabled:opacity-50"
+                >
                     {loading ? 'Procesando...' : 'Realizar Depósito'}
                 </button>
             </form>
