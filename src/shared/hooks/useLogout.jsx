@@ -1,5 +1,11 @@
 import { useEffect } from 'react';
-import { logout } from './useLogout'; // Asegúrate de que la ruta sea correcta
+
+
+export const logout = () => {
+    localStorage.removeItem('user');
+    window.location.href = '/home'; // Redirigir a la HomePage
+};
+
 
 const useAutoLogout = (timeout = 1200000) => { // 1200000 ms = 20 minutes
     useEffect(() => {
