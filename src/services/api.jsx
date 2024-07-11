@@ -85,3 +85,27 @@ export const registerService = async (data) => {
         };
     }
 };
+
+export const paymentService = async (data) => {
+    try {
+        return await apiClient.post('/service/pay', data)
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
+export const paidServices = async () => {
+    try {
+        return await apiClient.get('/service/paid')
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
+
