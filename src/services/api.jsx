@@ -1,4 +1,5 @@
-import axios from 'axios';
+import { data } from 'autoprefixer'
+import axios from 'axios'
 
 const apiClient = axios.create( {
     baseURL: 'http://127.0.0.1:8080/sistemaBancario/v1',
@@ -7,10 +8,10 @@ const apiClient = axios.create( {
 
 apiClient.interceptors.request.use(
     ( config ) => {
-        const userDetails = localStorage.getItem( 'user' );
+        const userDetails = localStorage.getItem( 'token' );
 
         if ( userDetails ) {
-            const token = JSON.parse( userDetails ).token;
+            const token = JSON.parse( userDetails );
             config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
@@ -113,3 +114,41 @@ export const getUser = async ( id ) => {
         };
     }
 };
+
+export const paymentService = async ( data ) => {
+    try {
+        console.log( data )
+        return await apiClient.post( '/service/pay', data )
+
+
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
+//export const payservice = async (data)
+
+export const paidServices = async () => {
+    try {
+        return await apiClient.get( '/service/paid' )
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
+export const accountbalance = async () => {
+    try {
+        return await apiClient.get( '/account/saldo' )
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+}

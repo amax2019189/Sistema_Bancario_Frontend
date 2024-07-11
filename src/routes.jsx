@@ -8,6 +8,8 @@ import AccountPage from './pages/accountPage/AccountPage.jsx';
 import { ParentComponent } from './components/deposits/ParentDepositComponent.jsx';
 import AccountDetails from './components/account/account.jsx';
 import Convertidor from './components/convertidor/Convertidor.jsx';
+import { PayService } from "./components/services/ServicesForm.jsx";
+import { AccountBalance } from './components/accountBalance/AccountBalance.jsx';
 
 // Routes
 const routes = [
@@ -19,8 +21,9 @@ const routes = [
   { path: '/deposits', element: <ParentComponent /> },
   { path: '/myAccount', element: <AccountDetails /> },
   { path: '/conversor', element: <Convertidor /> },
-  { path: '/transfer', element: <TransferPage /> }
-
+  { path: '/transfer', element: <TransferPage /> },
+  {path: '/services', element: <PayService/>},
+  { path: '/accountBalance', element: <AccountBalance/>}
 
 ];
 
