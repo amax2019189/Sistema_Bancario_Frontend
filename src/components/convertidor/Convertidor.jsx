@@ -1,28 +1,29 @@
 import { useState } from "react";
 import axios from "axios";
 import './convetidor.css'
+import Sidebar from "../sidebar/Sidebar";
 
-function App() {
-    const [formData, setFormData] = useState({
+function App () {
+    const [formData, setFormData] = useState( {
         from: '',
         to: '',
         amount: '',
-    })
+    } )
 
-    const [result, setResult] = useState(null)
-    const [error, setError] = useState('')
+    const [result, setResult] = useState( null )
+    const [error, setError] = useState( '' )
 
     const currencyCode = ["GTQ", "EUR", "MXN", "USD", "HNL", "NIO", "CRC", "CAD"];
 
-    const handleChange = (evento) => {
+    const handleChange = ( evento ) => {
         const { name, value } = evento.target
-        setFormData((prevData) => ({
+        setFormData( ( prevData ) => ( {
             ...prevData,
             [name]: value,
-        }))
+        } ) )
     }
-    console.log(formData)
-    const handleSubmit = async (evento) => {
+    console.log( formData )
+    const handleSubmit = async ( evento ) => {
         evento.preventDefault()
         try {
             const response = await axios.post(
@@ -30,10 +31,10 @@ function App() {
                 formData
             )
 
-            setResult(response?.data)
-            console.log(response.data)
-            setError('')
-        } catch (error) {
+            setResult( response?.data )
+            console.log( response.data )
+            setError( '' )
+        } catch ( error ) {
             setError(
                 error?.response ? error?.response.data : error?.message
             )
@@ -41,61 +42,64 @@ function App() {
     }
 
     return (
-        <div>
-            <section className="converter">
-                <form onSubmit={handleSubmit}>
+        <><Sidebar />
+            <div classname="right w-full flex gap-2 flex-col ml-80">
 
-                    <select
-                        name="from"
-                        value={formData.from}
-                        onChange={handleChange}
-                        className="input"
-                    >
+                <section className="converter">
+                    <form onSubmit={handleSubmit}>
 
-                        <option value="">moneda de origen</option>
-                        {currencyCode.map((code) => (
-                            <option key={code} value={code}>
-                                {code}
-                            </option>
-                        ))}
-                    </select>
+                        <select
+                            name="from"
+                            value={formData.from}
+                            onChange={handleChange}
+                            className="input"
+                        >
 
-                    <select
-                        name="to"
-                        value={formData.to}
-                        onChange={handleChange}
-                        className="input"
-                    >
+                            <option value="">moneda de origen</option>
+                            {currencyCode.map( ( code ) => (
+                                <option key={code} value={code}>
+                                    {code}
+                                </option>
+                            ) )}
+                        </select>
 
-                        <option value="">moneda de destino</option>
-                        {currencyCode.map((code) => (
-                            <option key={code} value={code}>
-                                {code}
-                            </option>
-                        ))}
-                    </select>
+                        <select
+                            name="to"
+                            value={formData.to}
+                            onChange={handleChange}
+                            className="input"
+                        >
 
-                    <input type="number" name="amount" value={formData.amount}
-                        onChange={handleChange}
-                        placeholder="ingrese el valor a convertir"
-                        className="input" />
+                            <option value="">moneda de destino</option>
+                            {currencyCode.map( ( code ) => (
+                                <option key={code} value={code}>
+                                    {code}
+                                </option>
+                            ) )}
+                        </select>
 
-                    <button type="submit" className="submit-btn">
-                        convertir
-                    </button>
+                        <input type="number" name="amount" value={formData.amount}
+                            onChange={handleChange}
+                            placeholder="ingrese el valor a convertir"
+                            className="input" />
 
-                </form>
-                {result && (
-                    <div className="result">
-                        <p>total de la conversion: {result.conversionAmount}{result.target}</p>
-                        <p>Tipo de cambio: {result.conversionRate}</p>
+                        <button type="submit" className="submit-btn">
+                            convertir
+                        </button>
 
-                    </div>
-                )}
-                {error && <p className="error">Error:{error}</p>}
+                    </form>
+                    {result && (
+                        <div className="result">
+                            <p>total de la conversion: {result.conversionAmount}{result.target}</p>
+                            <p>Tipo de cambio: {result.conversionRate}</p>
 
-            </section>
-        </div>
+                        </div>
+                    )}
+                    {error && <p className="error">Error:{error}</p>}
+
+                </section>
+            </div></>
+
     )
 }
 

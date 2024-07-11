@@ -91,9 +91,21 @@ export const registerService = async ( data ) => {
         };
     }
 };
-export const editUser = async ( data ) => {
+export const editUser = async ( id, data ) => {
     try {
-        return await apiClient.put( '/user/update/:id', data );
+        return await apiClient.put( `/user/update/${id}`, data );
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        };
+    }
+};
+
+//get user
+export const getUser = async ( id ) => {
+    try {
+        return await apiClient.get( `/user/get/${id}` );
     } catch ( e ) {
         return {
             error: true,

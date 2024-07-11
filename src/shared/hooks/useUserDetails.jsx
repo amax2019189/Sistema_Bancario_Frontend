@@ -25,6 +25,7 @@ export const useUserDetails = () => {
         rolerUser: userDetails?.rolerUser ? userDetails.rolerUser : "",
         numbercel: userDetails?.numbercel ? userDetails.numbercel : "",
         address: userDetails?.address ? userDetails.address : "",
+        birthdate: userDetails?.birthdate ? userDetails.birthdate : "",
         logout,
     };
 };
