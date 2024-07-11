@@ -1,4 +1,5 @@
-import axios from 'axios';
+import { data } from 'autoprefixer'
+import axios from 'axios'
 
 const apiClient = axios.create({
     baseURL: 'http://127.0.0.1:8080/sistemaBancario/v1',
@@ -109,4 +110,13 @@ export const paidServices = async () => {
     }
 }
 
-
+export const accountbalance = async () => {
+    try {
+        return await apiClient.get( '/account/saldo')
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
