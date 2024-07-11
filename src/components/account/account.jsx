@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../sidebar/Sidebar";
+import { useNavigate } from "react-router-dom";
 
+
+const NavButton = ( { text, id, onClickHandler, className } ) => {
+  return (
+    <span className={className} id={id} onClick={() => onClickHandler( id )} style={{ color: 'white', cursor: 'pointer' }}>
+      {text}
+    </span >
+  );
+};
 
 const AccountDetails = () => {
+  const navi = useNavigate();
   const [userData, setUserData] = useState( null );
 
   useEffect( () => {
@@ -34,6 +44,10 @@ const AccountDetails = () => {
       year: "numeric",
     } );
   };
+
+  const handleEdit = () => {
+    navi( '/editUser' )
+  }
 
   return (
     <div id="body" className="bg-slate-50 h-screen flex">
@@ -84,6 +98,7 @@ const AccountDetails = () => {
                 <span className="font-semibold text-gray-900">Email:</span>{" "}
                 {userData.email}
               </p>
+              <NavButton className="block px-4 py-2.5 bg-[#00AAE5] text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" id='editButton' text="Edit User" onClickHandler={handleEdit} />
             </div>
           </div>
         ) : (

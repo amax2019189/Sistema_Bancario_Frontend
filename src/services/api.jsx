@@ -8,12 +8,13 @@ const apiClient = axios.create( {
 
 apiClient.interceptors.request.use(
     ( config ) => {
-        const userDetails = localStorage.getItem( 'token' );
+        const userDetails = localStorage.getItem( 'user' );
 
         if ( userDetails ) {
-            const token = JSON.parse( userDetails );
+            const { token } = JSON.parse( userDetails );
             config.headers.Authorization = `Bearer ${token}`;
         }
+        console.log( 'Request Headers:', config.headers );
         return config;
     },
     ( e ) => {
@@ -94,7 +95,8 @@ export const registerService = async ( data ) => {
 };
 export const editUser = async ( id, data ) => {
     try {
-        return await apiClient.put( `/user/update/${id}`, data );
+        const response = await apiClient.put( `/user/update/${id}`, data );
+        return response.data;
     } catch ( e ) {
         return {
             error: true,

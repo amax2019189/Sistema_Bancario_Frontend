@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { editUser, getUser } from '../../services'; // Adjust path as per your file structure
 import toast from 'react-hot-toast';
 import { Input } from '../input/Input';
-import { Sidebar } from '../sidebar/Sidebar'; // Adjust path as per your file structure
+import Sidebar from '../sidebar/Sidebar'; // Adjust path as per your file structure
 
 const EditUser = () => {
     const [userData, setUserData] = useState( {
@@ -14,33 +14,35 @@ const EditUser = () => {
         password: '',
     } );
 
-    const _id = localStorage.getItem( '_id' ); // Fetch _id from localStorage or context
+    const user = localStorage.getItem( 'user' );
+    //fetch _id from user
+    const { _id } = JSON.parse( user );
 
     useEffect( () => {
-        // Fetch user data from localStorage based on _id
-        const fetchUserData = async () => {
-            try {
-                const response = await getUser( _id );
-                const { name, email, lastname, numbercel, img } = response.data.user;
-                setUserData( {
-                    name,
-                    email,
-                    lastname,
-                    numbercel,
-                    img,
-                    password: '',
-                } );
-            } catch ( error ) {
-                console.error( 'Error fetching user data:', error );
-                toast.error( error.message || 'Failed to fetch user data' );
-            }
+        const user = localStorage.getItem( 'user' );
+        if ( user ) {
+            const { _id } = JSON.parse( user );
+            fetchUserData( _id );
         }
+    }, [_id] );
 
-        if ( _id ) {
-            fetchUserData();
+    const fetchUserData = async ( userId ) => {
+        try {
+            const response = await getUser( userId );
+            const { name, email, lastname, numbercel, img } = response.data.user;
+            setUserData( {
+                name,
+                email,
+                lastname,
+                numbercel,
+                img,
+                password: '',
+            } );
+        } catch ( error ) {
+            console.error( 'Error fetching user data:', error );
+            toast.error( 'Failed to fetch user data' );
         }
-
-    }, [_id] ); // Ensure useEffect runs when _id changes
+    };// Ensure useEffect runs when _id changes
 
     const handleChange = ( value, field ) => {
         // Update state with user input
@@ -73,15 +75,6 @@ const EditUser = () => {
                 <h2 className="text-3xl font-semibold mb-4">Edit User Information</h2>
                 <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
                     <Input
-                        field="name"
-                        label="Name"
-                        value={userData.name}
-                        onChangeHandler={handleChange}
-                        type="text"
-                        className="mb-4"
-                        placeholder="Enter your name"
-                    />
-                    <Input
                         field="email"
                         label="Email"
                         value={userData.email}
@@ -90,6 +83,16 @@ const EditUser = () => {
                         className="mb-4"
                         placeholder="Enter your email"
                     />
+                    <Input
+                        field="name"
+                        label="Name"
+                        value={userData.name}
+                        onChangeHandler={handleChange}
+                        type="text"
+                        className="mb-4"
+                        placeholder="Enter your name"
+                    />
+
                     <Input
                         field="lastname"
                         label="Lastname"

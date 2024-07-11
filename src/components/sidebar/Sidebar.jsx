@@ -11,7 +11,7 @@ const NavButton = ( { text, id, onClickHandler, className } ) => {
     );
 };
 
-function Sidebar () {
+export default function Sidebar () {
     const [userData, setUserData] = useState( null );
     const { isLogged, logout } = useUserDetails();
 
@@ -120,4 +120,3 @@ function Sidebar () {
     )
 }
 
-export default Sidebar
