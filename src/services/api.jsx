@@ -1,3 +1,4 @@
+import { data } from 'autoprefixer'
 import axios from 'axios'
 
 const apiClient = axios.create( {
@@ -70,6 +71,17 @@ export const reverseDeposit = async ( data ) => {
     try {
         return await apiClient.delete( '/deposit/reverseDeposit', data )
     } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
+export const accountbalance = async ( data ) => {
+    try {
+        return await apiClient.get( '/account/:id/saldo', data)
+    } catch (e) {
         return {
             error: true,
             e
