@@ -10,6 +10,8 @@ import AccountDetails from './components/account/account.jsx';
 import Convertidor from './components/convertidor/Convertidor.jsx';
 import { PayService } from "./components/services/ServicesForm.jsx";
 import { AccountBalance } from './components/accountBalance/AccountBalance.jsx';
+import { RegisterServiceForm } from '../src/pages/registerService/registerServiceForm.jsx';
+
 
 // Routes
 const routes = [
@@ -23,7 +25,8 @@ const routes = [
   { path: '/conversor', element: <Convertidor /> },
   { path: '/transfer', element: <TransferPage /> },
   {path: '/services', element: <PayService/>},
-  { path: '/accountBalance', element: <AccountBalance/>}
+  { path: '/accountBalance', element: <AccountBalance/>},
+  { path: '/registerService', element: <RegisterServiceForm/>}
 
 ];
 
