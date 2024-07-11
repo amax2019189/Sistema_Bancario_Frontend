@@ -109,9 +109,9 @@ export const paidServices = async () => {
     }
 }
 
-export const accountbalance = async ( data ) => {
+export const accountbalance = async () => {
     try {
-        return await apiClient.get( '/account/:id/saldo', data)
+        return await apiClient.get( '/account/saldo')
     } catch (e) {
         return {
             error: true,
