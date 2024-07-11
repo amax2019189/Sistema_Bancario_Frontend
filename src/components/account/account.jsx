@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { logout } from "../../shared/hooks";
+
 
 const AccountDetails = () => {
-  const [userData, setUserData] = useState( null );
+  const [userData, setUserData,] = useState(null);
 
-  useEffect( () => {
+
+  useEffect(() => {
     // Función para obtener los datos del usuario desde localStorage
     const getUserDataFromLocalStorage = () => {
-      const user = localStorage.getItem( "user" );
-      if ( user ) {
-        const parsedUser = JSON.parse( user );
-        setUserData( parsedUser );
+      const user = localStorage.getItem("user");
+      if (user) {
+        const parsedUser = JSON.parse(user);
+        setUserData(parsedUser);
       }
     };
 
     getUserDataFromLocalStorage();
-  }, [] ); // Se ejecuta solo una vez al montar el componente
+  }, []);
+
+  const handleLogout = () => {
+    logout()
+  }
 
   return (
     <div id="body" className="bg-slate-50 h-screen flex">
@@ -47,16 +54,16 @@ const AccountDetails = () => {
               <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href={"/deposits"}>Depositos</a>
             </li>
             <li>
-              <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Transferencias</a>
+              <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href={"/transfer"}>Transferencias</a>
             </li>
             <li>
-              <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Conversor de divisas</a>
+              <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href={"conversor"}>Conversor de divisas</a>
             </li>
             <li>
               <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Contact</a>
             </li>
             <li>
-              <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Logout</a>
+              <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href={handleLogout}>Logout</a>
             </li>
 
           </ul></div>
@@ -94,7 +101,7 @@ const AccountDetails = () => {
             </div>
           </div>
         ) : (
-          <p className="text-red-600 text-center text-xl">Error al iniciar sesión de usuario...</p>
+          <p></p>
         )}
       </div>
     </div>
