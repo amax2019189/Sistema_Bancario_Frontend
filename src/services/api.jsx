@@ -89,6 +89,7 @@ export const registerService = async (data) => {
 export const paymentService = async (data) => {
     try {
         return await apiClient.post('/service/pay', data)
+        console.log(data)
     } catch (e) {
         return {
             error: true,
