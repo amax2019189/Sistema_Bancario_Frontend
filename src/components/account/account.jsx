@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { logout } from "../../shared/hooks";
+import { logout, useUserDetails } from "../../shared/hooks";
 
 
 const AccountDetails = () => {
-  const [userData, setUserData,] = useState(null);
+  const [userData, setUserData,] = useState( null );
 
 
-  useEffect(() => {
+  useEffect( () => {
     // Función para obtener los datos del usuario desde localStorage
     const getUserDataFromLocalStorage = () => {
-      const user = localStorage.getItem("user");
-      if (user) {
-        const parsedUser = JSON.parse(user);
-        setUserData(parsedUser);
+      const user = localStorage.getItem( "user" );
+      if ( user ) {
+        const parsedUser = JSON.parse( user );
+        setUserData( parsedUser );
       }
     };
 
     getUserDataFromLocalStorage();
-  }, []);
+  }, [] );
 
   const handleLogout = () => {
     logout()
@@ -87,13 +87,14 @@ const AccountDetails = () => {
                 <span className="font-semibold text-gray-900">Rol:</span> {userData.roleUser}
               </p>
               <p className="text-xl text-gray-700 mb-4">
+                <span className="font-semibold text-gray-900">Teléfono:</span> {userData.numbercel}
+              </p>
+              <p className="text-xl text-gray-700 mb-4">
                 <span className="font-semibold text-gray-900">Dirección:</span> {userData.address}
               </p>
+
               <p className="text-xl text-gray-700 mb-4">
-                <span className="font-semibold text-gray-900">Teléfono:</span> {userData.phone}
-              </p>
-              <p className="text-xl text-gray-700 mb-4">
-                <span className="font-semibold text-gray-900">Fecha de nacimiento:</span> {userData.dob}
+                <span className="font-semibold text-gray-900">Fecha de nacimiento:</span> {userData.birthdate}
               </p>
               <p className="text-xl text-gray-700">
                 <span className="font-semibold text-gray-900">Email:</span> {userData.email}

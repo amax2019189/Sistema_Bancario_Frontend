@@ -11,16 +11,16 @@ import ButtonBanck from '../../components/ButtonBanck';
 import { useUserDetails } from '../../shared/hooks';
 import useAutoLogout from '../../shared/hooks/useAutoLogout'; // Ajusta la ruta según tu estructura de proyecto
 
-const NavButton = ({ text, id, onClickHandler }) => {
+const NavButton = ( { text, id, onClickHandler } ) => {
     return (
-        <span className="nav-button" id={id} onClick={() => onClickHandler(id)} style={{ color: 'white', cursor: 'pointer' }}>
+        <span className="nav-button" id={id} onClick={() => onClickHandler( id )} style={{ color: 'white', cursor: 'pointer' }}>
             {text}
         </span>
     );
 };
 
 const AccountPage = () => {
-    const [userData, setUserData] = useState(null);
+    const [userData, setUserData] = useState( null );
     const { isLogged, logout } = useUserDetails();
 
     const handleLogout = () => {
@@ -29,17 +29,17 @@ const AccountPage = () => {
 
     useAutoLogout(); // Inicializa el hook para el auto logout
 
-    useEffect(() => {
+    useEffect( () => {
         const getUserDataFromLocalStorage = () => {
-            const user = localStorage.getItem("user");
-            if (user) {
-                const parsedUser = JSON.parse(user);
-                setUserData(parsedUser);
+            const user = localStorage.getItem( "user" );
+            if ( user ) {
+                const parsedUser = JSON.parse( user );
+                setUserData( parsedUser );
             }
         };
 
         getUserDataFromLocalStorage();
-    }, []); 
+    }, [] );
 
     return (
         <>
@@ -79,14 +79,14 @@ const AccountPage = () => {
                             <li>
                                 <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Contact</a>
                             </li>
-                            {isLogged ? ( 
+                            {isLogged ? (
                                 <li>
                                     <div><NavButton id='logout' text='LogOut' onClickHandler={handleLogout} /></div>
-                                </li> 
-                            ) : ( 
+                                </li>
+                            ) : (
                                 <li>
                                     <a className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" href="#">Logout</a>
-                                </li> 
+                                </li>
                             )}
                         </ul>
                     </div>

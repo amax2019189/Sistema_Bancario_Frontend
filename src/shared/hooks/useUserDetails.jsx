@@ -19,7 +19,12 @@ export const useUserDetails = () => {
 
     return {
         isLogged: Boolean( userDetails ),
-        username: userDetails?.username ? userDetails.username : "Guest",
+        name: userDetails?.name ? userDetails.name : "Guest",
+        lastName: userDetails?.lastName ? userDetails.lastName : "",
+        email: userDetails?.email ? userDetails.email : "",
+        rolerUser: userDetails?.rolerUser ? userDetails.rolerUser : "",
+        numbercel: userDetails?.numbercel ? userDetails.numbercel : "",
+        address: userDetails?.address ? userDetails.address : "",
         logout,
     };
 };
