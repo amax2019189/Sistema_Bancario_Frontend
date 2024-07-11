@@ -8,26 +8,28 @@ export const usePayServices = () => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    const payService = async(accountNumberOrigen, accountNumberDestino, amount, description, serviceType) => {
+    const payService = async (accountNumberOrigen, accountNumberDestino, amount, description, service) => {
         setIsLoading(true)
         try {
             const response = await payServiceRequest({
-                accountNumberOrigen, 
+                accountNumberOrigen,
                 accountNumberDestino,
-                amount, 
-                description, 
-                serviceType
+                amount,
+                description,
+                service
             })
 
+
+            console.log(response)
             setIsLoading(false)
 
-            if(response.error){
+            if (response.error) {
                 console.log(response.error);
                 return toast.error(response.e?.response?.data || 'Ocurrió un error al pagar el servicio, intenta de nuevo')
             }
 
             navigate('/services');
-            window.location.reload();
+
 
         } catch (error) {
             setIsLoading(false);
@@ -36,7 +38,7 @@ export const usePayServices = () => {
         }
     };
 
-    return{
+    return {
         payService,
         isLoading
     }

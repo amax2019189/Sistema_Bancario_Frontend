@@ -40,7 +40,7 @@ export const PayService = ({ switchPublicHandler }) => {
             isValid: false,
             showError: false,
         },
-        serviceType: {
+        service: {
             value: "",
             isValid: false,
             showError: false,
@@ -72,7 +72,7 @@ export const PayService = ({ switchPublicHandler }) => {
             case "description":
                 isValid = validateDescription(value);
                 break;
-            case "serviceType":
+            case "service":
                 isValid = validateServiceType(value);
                 break;
             default:
@@ -91,12 +91,13 @@ export const PayService = ({ switchPublicHandler }) => {
 
     const handlePayService = (event) => {
         event.preventDefault();
+
         payService(
             formState.accountNumberOrigen.value,
             formState.accountNumberDestino.value,
-            formState.amount.value,
+            parseInt(formState.amount.value),
             formState.description.value,
-            formState.serviceType.value
+            formState.service.value
         );
     };
 
@@ -106,7 +107,7 @@ export const PayService = ({ switchPublicHandler }) => {
         !formState.accountNumberDestino.isValid ||
         !formState.amount.isValid ||
         !formState.description.isValid ||
-        !formState.serviceType.isValid;
+        !formState.service.isValid;
 
     return (
         <div className="max-w-xl mx-auto p-8 bg-white rounded-lg shadow-md">
@@ -139,7 +140,7 @@ export const PayService = ({ switchPublicHandler }) => {
                     label="Amount"
                     value={formState.amount.value}
                     onChangeHandler={handleInputValueChange}
-                    type="number"
+                    type="Number"
                     onBlurHandler={handleInputValidationOnBlur}
                     showErrorMessage={formState.amount.showError}
                     validationMessage={amountValidateMessage}
@@ -156,12 +157,12 @@ export const PayService = ({ switchPublicHandler }) => {
                     validationMessage={descriptionValidateMessage}
                     className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                <label htmlFor="serviceType">Service Type:</label>
+                <label htmlFor="service">Service Type:</label>
                 <select
-                    id="serviceType"
-                    value={formState.serviceType.value}
-                    onChange={(e) => handleInputValueChange(e.target.value, "serviceType")}
-                    onBlur={() => handleInputValidationOnBlur(formState.serviceType.value, "serviceType")}
+                    id="service"
+                    value={formState.service.value}
+                    onChange={(e) => handleInputValueChange(e.target.value, "service")}
+                    onBlur={() => handleInputValidationOnBlur(formState.service.value, "service")}
                     className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                     <option value="">Selecciona una materia</option>

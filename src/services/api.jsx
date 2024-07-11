@@ -8,10 +8,10 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
     (config) => {
-        const userDetails = localStorage.getItem('user');
+        const userDetails = localStorage.getItem('token');
 
         if (userDetails) {
-            const token = JSON.parse(userDetails).token;
+            const token = JSON.parse(userDetails);
             config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
@@ -89,8 +89,10 @@ export const registerService = async (data) => {
 
 export const paymentService = async (data) => {
     try {
-        return await apiClient.post('/service/pay', data)
         console.log(data)
+        return await apiClient.post('/service/pay', data)
+        
+        
     } catch (e) {
         return {
             error: true,
@@ -98,6 +100,8 @@ export const paymentService = async (data) => {
         }
     }
 }
+
+//export const payservice = async (data)
 
 export const paidServices = async () => {
     try {

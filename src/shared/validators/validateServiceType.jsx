@@ -1,6 +1,6 @@
 export const serviceTypeValidateMessage = 'Servicios validos peluqueria, electricidad, agua, zapateria, telefonia, ropa';
 
-export const validateServiceType = (serviceType) => {
+export const validateServiceType = (service) => {
     const validServices = ['peluqueria', 'electricidad', 'agua', 'zapateria', 'telefonia', 'ropa'];
-    return validServices.includes(serviceType);
+    return validServices.includes(service);
 }

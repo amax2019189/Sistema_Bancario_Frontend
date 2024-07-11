@@ -28,12 +28,13 @@ export const useLogin = () => {
                 );
             }
 
-            const { userDetails } = response.data
+            const { userDetails, token } = response.data
 
             console.log("User details:", userDetails); // Verificar los userDetails recibidos
 
             // Aquí se almacenan los datos del usuario y el token en localStorage
             localStorage.setItem('user', JSON.stringify(userDetails))
+            localStorage.setItem('token', JSON.stringify(token))
             
             // Navegar a la página principal después del inicio de sesión exitoso
             navigate("/");
