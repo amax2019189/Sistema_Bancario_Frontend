@@ -27,7 +27,7 @@ const routes = [
   { path: '/transfer', element: <TransferPage /> },
   {path: '/services', element: <PayService/>},
   { path: '/accountBalance', element: <AccountBalance/>},
-  {path: '/viewServices', element: <PaidServices/>}
+  {path: '/viewServices', element: <PaidServices/>},
   { path: '/registerService', element: <RegisterServiceForm/>}
 ];
 
