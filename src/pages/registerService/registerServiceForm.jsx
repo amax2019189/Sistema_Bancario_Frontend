@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { InputService } from '../../components/imputService/imputService';
 import { useRegisterService } from '../../shared/hooks/useRegisterService';
 
-const RegisterServiceForm = () => {
+export const RegisterServiceForm = () => {
     const { registerService, isLoading } = useRegisterService();
     const [formData, setFormData] = useState({
         email: '',
@@ -174,4 +174,3 @@ const RegisterServiceForm = () => {
     );
 };
 
-export default RegisterServiceForm;

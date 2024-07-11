@@ -131,8 +131,6 @@ export const paymentService = async ( data ) => {
     }
 }
 
-//export const payservice = async (data)
-
 export const paidServices = async () => {
     try {
         return await apiClient.get( '/service/paid' )

@@ -1,0 +1,28 @@
+.recuadro {
+    background-color: #007BFF; /* Azul */
+    color: #000000; /* Negro */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .recuadro h2 {
+    color: #FFFFFF; /* Blanco */
+  }
+  
+  .recuadro ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .recuadro li {
+    margin-bottom: 15px;
+  }
+  
+  .recuadro h3 {
+    margin: 0 0 5px 0;
+  }
+  
+  .recuadro p {
+    margin: 2px 0;
+  }
+  
