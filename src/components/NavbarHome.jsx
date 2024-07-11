@@ -4,14 +4,14 @@ import { useUserDetails } from '../shared/hooks/useUserDetails'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { toast, Toaster } from 'react-hot-toast'
 
-const NavButton = ({ text, id, onClickHandler }) => {
+const NavButton = ( { text, id, onClickHandler } ) => {
     return (
-        <span className="nav-button" id={id} onClick={() => onClickHandler(id)} style={{ color: 'white', cursor: 'pointer' }}>
+        <span className="nav-button" id={id} onClick={() => onClickHandler( id )} style={{ color: 'white', cursor: 'pointer' }}>
             {text}
         </span >
     );
 };
-function NavbarHome() {
+function NavbarHome () {
     const loc = useLocation()
     const navigate = useNavigate()
 
@@ -21,15 +21,15 @@ function NavbarHome() {
         logout()
     }
 
-    const handleNav = (id) => {
-        if (id === 'depositsButton') {
-            if (loc.pathname === '/deposits') {
-                toast.error('You are already on the Deposits page')
+    const handleNav = ( id ) => {
+        if ( id === 'depositsButton' ) {
+            if ( loc.pathname === '/deposits' ) {
+                toast.error( 'You are already on the Deposits page' )
             } else {
-                navigate('/deposits')
+                navigate( '/deposits' )
             }
         } else {
-            toast.error('Agreguen más botones')
+            toast.error( 'Agreguen más botones' )
         }
     }
 
@@ -49,12 +49,12 @@ function NavbarHome() {
                 <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                     <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
-                            <a href="/" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white " aria-current="page">Inicio</a>
+                            <a href={isLogged ? '/user' : '#'} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Inicio</a>
                         </li>
 
-                        {!isLogged ? (<li>
+                        {!isLogged ? ( <li>
                             <a href="/auth" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
-                        </li>) : (
+                        </li> ) : (
                             <div>
                                 <NavButton id='logoutButton' text="Logout" onClickHandler={handleLogout} />
                             </div>

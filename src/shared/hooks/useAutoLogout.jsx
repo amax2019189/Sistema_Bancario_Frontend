@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { logout } from './useLogout'; // Asegúrate de que la ruta sea correcta
 
-const useAutoLogout = (timeout = 20000) => { // 20000 ms = 20 seconds
+const useAutoLogout = (timeout = 1200000) => { // 20000 ms = 20 seconds
     useEffect(() => {
         let logoutTimer;
         

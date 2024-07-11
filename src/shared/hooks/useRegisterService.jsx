@@ -22,7 +22,6 @@ export const useRegisterService = () => {
             password,
             roleUser,
             monthlyincome,
-            img,
             accountType
         });
 
