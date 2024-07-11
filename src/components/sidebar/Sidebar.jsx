@@ -1,12 +1,23 @@
 import { useState } from "react";
-import { logout } from "../../shared/hooks";
+import { useUserDetails } from "../../shared/hooks/useUserDetails";
 import { useEffect } from "react";
-const handleLogout = () => {
-    logout();
+
+
+const NavButton = ( { text, id, onClickHandler, className } ) => {
+    return (
+        <span className={className} id={id} onClick={() => onClickHandler( id )} style={{ color: 'white', cursor: 'pointer' }}>
+            {text}
+        </span >
+    );
 };
 
 function Sidebar () {
     const [userData, setUserData] = useState( null );
+    const { isLogged, logout } = useUserDetails();
+
+    const handleLogout = () => {
+        logout();
+    };
 
     useEffect( () => {
         // Function to obtain user data from localStorage
@@ -96,14 +107,13 @@ function Sidebar () {
                             Contact
                         </a>
                     </li>
-                    <li>
-                        <a
-                            className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg"
-                            href={handleLogout}
-                        >
-                            Logout
-                        </a>
-                    </li>
+                    {!isLogged ? ( <li>
+                        <a href="/auth" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+                    </li> ) : (
+                        <div>
+                            <NavButton className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" id='logoutButton' text="Logout" onClickHandler={handleLogout} />
+                        </div>
+                    )}
                 </ul>
             </div>
         </nav>
