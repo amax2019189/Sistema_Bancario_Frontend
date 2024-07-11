@@ -28,7 +28,7 @@ export const useLogin = () => {
                 );
             }
 
-            const { userDetails, token } = response.data
+            const { userDetails, token } = response.data;
 
             if ( !userDetails || !token ) {
                 console.error( "Invalid response structure:", response.data );
@@ -38,8 +38,8 @@ export const useLogin = () => {
             console.log( "User details:", userDetails ); // Verificar los userDetails recibidos
 
             // Aquí se almacenan los datos del usuario y el token en localStorage
-            localStorage.setItem( 'user', JSON.stringify( userDetails ) )
-            localStorage.setItem( 'token', JSON.stringify( token ) )
+            localStorage.setItem( 'user', JSON.stringify( userDetails ) );
+            localStorage.setItem( 'token', JSON.stringify( token ) );
 
             // Navegar a la página principal después del inicio de sesión exitoso
             navigate( "/user" );

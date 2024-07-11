@@ -25,16 +25,19 @@ apiClient.interceptors.request.use(
 export const login = async ( data ) => {
     try {
         const response = await apiClient.post( '/auth/login', data );
-        const user = response.data.userDetails
 
-        console.log( "User data from Api:", user )
+        const { userDetails, token } = response.data; // Verifica que el destructuring sea correcto
 
-        localStorage.setItem( 'user', JSON.stringify( user ) )
-        return user
-    } catch ( e ) {
+        console.log( "User data from API:", userDetails );
+
+        localStorage.setItem( 'user', JSON.stringify( userDetails ) );
+        localStorage.setItem( 'token', token ); // Almacena el token como string, no JSON
+
+        return { userDetails, token };
+    } catch ( error ) {
         return {
             error: true,
-            e
+            message: error.response?.data?.message || "Ocurrió un error al iniciar sesión"
         };
     }
 };
