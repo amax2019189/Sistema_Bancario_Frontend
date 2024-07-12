@@ -196,7 +196,7 @@ export const addFavoriteAccount = async ( userId, data ) => {
     } catch ( e ) {
         return {
             error: true,
-            error
+            e
         }
     }
 
