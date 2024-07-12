@@ -259,3 +259,36 @@ export const payLoan = async ( data ) => {
         }
     }
 };
+
+export const approveLoan = async ( data ) => {
+    try {
+        return await apiClient.post( '/banck/approveLoan', data );
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+};
+
+export const getApproved = async () => {
+    try {
+        return await apiClient.get( '/banck/getApproved');
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+};
+
+export const getNonApproved = async () => {
+    try {
+        return await apiClient.get( '/banck/getNonApproved');
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+};

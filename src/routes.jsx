@@ -10,11 +10,11 @@ import AccountDetails from './components/account/account.jsx';
 import Convertidor from './components/convertidor/Convertidor.jsx';
 import { PayService } from "./components/services/ServicesForm.jsx";
 import { PaidServices } from './components/services/ServicesView.jsx';
-import { AccountSummary } from './components/accountBalance/AccountBalance.jsx';
+import { AccountBalance } from './components/accountBalance/AccountBalance.jsx';
 import EditUser from './components/account/updateAccount.jsx';
 import { RegisterServiceForm } from '../src/pages/registerService/registerServiceForm.jsx';
 import { CreateAccountForm } from './components/accounts/CreateAccount.jsx'
-//loanParentComponent
+import {LoanApproved} from './components/loan/loanApproved.jsx'
 import { loanParentComponent } from './components/loan/loanParentComponent.jsx';
 
 // Routes
@@ -30,10 +30,9 @@ const routes = [
   { path: '/transfer', element: <TransferPage /> },
   { path: '/services', element: <PayService /> },
   { path: '/accountBalance', element: <AccountBalance /> },
-  { path: '/registerService', element: <RegisterServiceForm /> },
-  { path: '/accountBalance', element: <AccountSummary /> },
+  { path: '/registerService', element: <RegisterServiceForm /> },,
   { path: '/loans', element: <loanParentComponent /> },
-
+  { path: '/Approved', element: <LoanApproved /> },
 ];
 
 export default routes;
