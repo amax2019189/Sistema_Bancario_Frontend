@@ -10,7 +10,7 @@ import AccountDetails from './components/account/account.jsx';
 import Convertidor from './components/convertidor/Convertidor.jsx';
 import { PayService } from "./components/services/ServicesForm.jsx";
 import { PaidServices } from './components/services/ServicesView.jsx';
-import { AccountBalance } from './components/accountBalance/AccountBalance.jsx';
+import { AccountSummary } from './components/accountBalance/AccountBalance.jsx';
 import EditUser from './components/account/updateAccount.jsx';
 import { RegisterServiceForm } from '../src/pages/registerService/registerServiceForm.jsx';
 import { CreateAccountForm } from './components/accounts/CreateAccount.jsx'
@@ -28,7 +28,8 @@ const routes = [
   { path: '/transfer', element: <TransferPage /> },
   { path: '/services', element: <PayService /> },
   { path: '/accountBalance', element: <AccountBalance /> },
-  { path: '/registerService', element: <RegisterServiceForm /> }
+  { path: '/registerService', element: <RegisterServiceForm /> },
+  { path: '/accountBalance', element: <AccountSummary/> }
 
 ];
 
