@@ -11,7 +11,9 @@ import {
 import { useApproveLoan } from "../../shared/hooks/useApproveLoan"
 
 export const LoanApproved = ({ switchPublicHandler }) => {
-    const { loanApproved, isLoading } = useApproveLoan()
+
+    const { approveLoan, isLoading } = useApproveLoan()
+    
     const [formState, setFormState] = useState({
         withdrawCode: {
             value: "",
@@ -61,7 +63,7 @@ export const LoanApproved = ({ switchPublicHandler }) => {
     const handleApproveLoan = (event) => {
         event.preventDefault();
 
-        loanApproved(
+        approveLoan(
             formState.withdrawCode.value,
             formState.state.value
         );

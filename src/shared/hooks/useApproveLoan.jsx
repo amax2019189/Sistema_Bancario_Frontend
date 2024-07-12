@@ -23,7 +23,7 @@ export const useApproveLoan = () => {
                 return toast.error(response.e?.response?.data || 'Ocurrió un error al aprovar un prestamo, intenta de nuevo')
             }
 
-            navigate('/loans')
+            navigate('/user')
 
         } catch (error) {
             setIsLoading(false);

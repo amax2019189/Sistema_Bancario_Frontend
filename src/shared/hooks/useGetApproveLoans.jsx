@@ -3,32 +3,24 @@ import toast from "react-hot-toast";
 import { getApproved as getApprovedRequest } from "../../services";
 
 export const useGetApproveLoans = () => {
-    const [loans, setLoans] = useState([])
+    const [loans, setLoans] = useState(null);
 
-    const getApproved = async (isLogged = false) => {
-        const loansData = await getApprovedRequest()
-
-        if (servicesData.error) {
-            return toast.error(
-                servicesData.e?.response?.data || 'Ocurrio un error al mostrar prestamos'
-            )
+    const getApproved = async () => {
+        try {
+            const loansData = await getApprovedRequest();
+            if (loansData.error) {
+                toast.error(loansData.e?.response?.data || 'Ocurrió un error al mostrar préstamos');
+            } else {
+                setLoans(loansData.data.approvedLoans);
+            }
+        } catch (error) {
+            toast.error('Ocurrió un error al mostrar préstamos');
         }
+    };
 
-        if(isLogged){
-            return setLoans({
-                loans:loansData.data.approvedLoans
-            })
-        }
-        setLoans({
-            loans:loansData.data.approvedLoans
-        })
-
-    }
-
-    return{
+    return {
         getApproved,
-        isFetching: !Boolean(loans),
-        allLoans: loans?.approvedLoans
-    }
-
-}
+        isFetching: loans === null,
+        allLoans: loans || []
+    };
+};

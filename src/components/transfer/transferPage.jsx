@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../sidebar/Sidebar';
-import useTransfer from '../../shared/hooks/useTransfer';
+//import useTransfer from '../../shared/hooks/useTransfer';
 import { useFavorites } from '../../shared/hooks/useFavorites';
 import toast from 'react-hot-toast';
 import HeadPage from '../HeadPage';
