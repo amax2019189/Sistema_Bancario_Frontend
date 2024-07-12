@@ -10,12 +10,13 @@ import AccountDetails from './components/account/account.jsx';
 import Convertidor from './components/convertidor/Convertidor.jsx';
 import { PayService } from "./components/services/ServicesForm.jsx";
 import { PaidServices } from './components/services/ServicesView.jsx';
-import { AccountSummary } from './components/accountBalance/AccountBalance.jsx';
+import { AccountBalance } from './components/accountBalance/AccountBalance.jsx';
 import EditUser from './components/account/updateAccount.jsx';
 import { RegisterServiceForm } from '../src/pages/registerService/registerServiceForm.jsx';
 import { CreateAccountForm } from './components/accounts/CreateAccount.jsx'
-//loanParentComponent
 import { loanParentComponent } from './components/loan/loanParentComponent.jsx';
+import { ActivateAccount } from './components/accounts/ActivateAccount.jsx';
+import { DeactivateAccount } from './components/accounts/DesactivatedAccount.jsx';
 
 // Routes
 const routes = [
@@ -31,9 +32,10 @@ const routes = [
   { path: '/services', element: <PayService /> },
   { path: '/accountBalance', element: <AccountBalance /> },
   { path: '/registerService', element: <RegisterServiceForm /> },
-  { path: '/accountBalance', element: <AccountSummary /> },
+  { path: '/createAccountForm', element: <CreateAccountForm/>},
   { path: '/loans', element: <loanParentComponent /> },
-
+  { path: '/activateAccount', element: <ActivateAccount/>},
+  { path: '/deactivateAccount', element: <DeactivateAccount/>}
 ];
 
 export default routes;

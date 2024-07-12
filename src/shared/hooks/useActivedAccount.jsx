@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { activateAccount as activateAccountRequest } from "../../services";
 import toast from "react-hot-toast";
 
