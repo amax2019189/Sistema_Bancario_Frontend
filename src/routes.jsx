@@ -21,7 +21,7 @@ const routes = [
   { path: '/*', element: <HomePage /> },
   { path: '/Prueba', element: <Prueba /> },
   { path: '/user', element: <AccountPage /> },
-  { path: '/deposits', element: <ParentComponent /> },
+  { path: '/administrador', element: <ParentComponent /> },
   { path: '/myAccount', element: <AccountDetails /> },
   { path: '/conversor', element: <Convertidor /> },
   { path: '/transfer', element: <TransferPage /> },
