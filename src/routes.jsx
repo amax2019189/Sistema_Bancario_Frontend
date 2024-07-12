@@ -3,7 +3,7 @@ import { AuthPage } from '../src/pages/auth'
 import HomePage from './pages/homePage/HomePage.jsx'
 import Prueba from './pages/prueba/prueba.jsx';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import {TransferPage} from './components/transfer/transferPage.jsx';
+import { TransferPage } from './components/transfer/transferPage.jsx';
 import AccountPage from './pages/accountPage/AccountPage.jsx';
 import { ParentComponent } from './components/deposits/ParentDepositComponent.jsx';
 import AccountDetails from './components/account/account.jsx';
@@ -19,7 +19,7 @@ import { LoanParentComponent } from './components/loan/LoanParentComponent.jsx';
 import { ActivateAccount } from './components/accounts/ActivateAccount.jsx';
 import { DeactivateAccount } from './components/accounts/DesactivatedAccount.jsx';
 import StatusAccount from './components/StatusAccount.jsx';
-import {LoanGetApproved} from './components/loan/LoanGetApproved.jsx'
+import { LoanGetApproved } from './components/loan/LoanGetApproved.jsx'
 // Routes
 const routes = [
   { path: '/auth', element: <AuthPage /> },
@@ -37,8 +37,8 @@ const routes = [
   { path: '/loanParentComponent', element: <LoanParentComponent /> },
   { path: '/Approved', element: <LoanApproved /> },
   { path: '/loansApproved', element: <LoanGetApproved /> },
-  { path: '/activateAccount', element: <ActivateAccount/>},
-  { path: '/deactivateAccount', element: <DeactivateAccount/>},
+  { path: '/activateAccount', element: <ActivateAccount /> },
+  { path: '/deactivateAccount', element: <DeactivateAccount /> },
   { path: '/stateAccount', element: <StatusAccount /> },
   { path: '/PaidServices', element: <PaidServices /> },
   { path: '/EditUser', element: <EditUser /> },
