@@ -3,34 +3,34 @@ import { useUserDetails } from "../../shared/hooks/useUserDetails";
 import { useEffect } from "react";
 
 
-const NavButton = ( { text, id, onClickHandler, className } ) => {
+const NavButton = ({ text, id, onClickHandler, className }) => {
     return (
-        <span className={className} id={id} onClick={() => onClickHandler( id )} style={{ color: 'white', cursor: 'pointer' }}>
+        <span className={className} id={id} onClick={() => onClickHandler(id)} style={{ color: 'white', cursor: 'pointer' }}>
             {text}
         </span >
     );
 };
 
-export default function Sidebar () {
-    const [userData, setUserData] = useState( null );
+export default function Sidebar() {
+    const [userData, setUserData] = useState(null);
     const { isLogged, logout } = useUserDetails();
 
     const handleLogout = () => {
         logout();
     };
 
-    useEffect( () => {
+    useEffect(() => {
         // Function to obtain user data from localStorage
         const getUserDataFromLocalStorage = () => {
-            const user = localStorage.getItem( "user" );
-            if ( user ) {
-                const parsedUser = JSON.parse( user );
-                setUserData( parsedUser );
+            const user = localStorage.getItem("user");
+            if (user) {
+                const parsedUser = JSON.parse(user);
+                setUserData(parsedUser);
             }
         };
 
         getUserDataFromLocalStorage();
-    }, [] );
+    }, []);
     return (
         <nav className="bg-gray-900 w-80 h-screen flex flex-col gap-10 border-r border-none fixed">
             <div className="logo text-2xl font-bold text-center h-16 flex items-center justify-center mt-[3rem] text-red-50">
@@ -102,14 +102,14 @@ export default function Sidebar () {
                     <li>
                         <a
                             className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg"
-                            href="/loans"
+                            href={"/stateAccount"}
                         >
-                            Loans
+                            StateAccount
                         </a>
                     </li>
-                    {!isLogged ? ( <li>
+                    {!isLogged ? (<li>
                         <a href="/auth" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
-                    </li> ) : (
+                    </li>) : (
                         <div>
                             <NavButton className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg" id='logoutButton' text="Logout" onClickHandler={handleLogout} />
                         </div>

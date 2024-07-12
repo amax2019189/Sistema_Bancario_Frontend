@@ -47,7 +47,7 @@ const TransferForm = ({ onSubmit, isLoading }) => {
       <div className='ml-80 p-nonel'>
         <HeaderTransfer />
       </div>
-      <div className='container right w-full flex gap-2 flex-col ml-30 mx-auto mt-50'>
+      <div className='container right w-full flex gap-2 flex-col ml-30 mx-[20rem] mt-[2rem]'>
         <form onSubmit={handleSubmit} className="max-w-xl mx-auto p-8 bg-white rounded-lg shadow-md">
           <div className="mb-6">
             <input
