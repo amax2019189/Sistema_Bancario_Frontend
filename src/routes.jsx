@@ -14,6 +14,8 @@ import { AccountSummary } from './components/accountBalance/AccountBalance.jsx';
 import EditUser from './components/account/updateAccount.jsx';
 import { RegisterServiceForm } from '../src/pages/registerService/registerServiceForm.jsx';
 import { CreateAccountForm } from './components/accounts/CreateAccount.jsx'
+//loanParentComponent
+import { loanParentComponent } from './components/loan/loanParentComponent.jsx';
 
 // Routes
 const routes = [
@@ -27,7 +29,8 @@ const routes = [
   { path: '/conversor', element: <Convertidor /> },
   { path: '/transfer', element: <TransferPage /> },
   { path: '/services', element: <PayService /> },
-  { path: '/accountBalance', element: <AccountSummary/> }
+  { path: '/accountBalance', element: <AccountSummary /> },
+  { path: '/loans', element: <loanParentComponent /> },
 
 ];
 

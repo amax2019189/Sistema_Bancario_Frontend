@@ -240,3 +240,27 @@ export const makeTransfer = async ( data ) => {
         }
     }
 };
+
+//withdraw loan
+export const withdrawLoan = async ( data ) => {
+    try {
+        return await apiClient.post( '/banck/withdrawLoan', data );
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+};
+
+//payLoan
+export const payLoan = async ( data ) => {
+    try {
+        return await apiClient.post( '/banck/payloan', data );
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+};
