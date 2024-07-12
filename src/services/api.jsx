@@ -228,3 +228,15 @@ export const updateFavoriteAlias = async ( userId, accountNumber, alias ) => {
     }
 
 };
+
+// makeTransfer routes
+export const makeTransfer = async ( data ) => {
+    try {
+        return await apiClient.post( '/transfer/makeTransfer', data );
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+};
