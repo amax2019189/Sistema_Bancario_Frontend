@@ -62,7 +62,7 @@ export const ParentComponent = () => {
                         className="w-full h-48 object-cover rounded-t-lg mb-4"
                     />
                     <button
-                        className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 w-full"
+                        className="mb-4 px-4 py-2 bg-gray-900 text-white rounded hover:bg-blue-700 w-full"
                         onClick={toggleDepositForm}
                     >
                         {showDepositForm ? 'Ocultar Formulario de Depósito' : 'Mostrar Formulario de Depósito'}
@@ -77,7 +77,7 @@ export const ParentComponent = () => {
                         className="w-full h-48 object-cover rounded-t-lg mb-4"
                     />
                     <button
-                        className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 w-full"
+                        className="mb-4 px-4 py-2 bg-gray-900 text-white rounded hover:bg-blue-700 w-full"
                         onClick={toggleEditForm}
                     >
                         {showEditForm ? 'Ocultar Formulario de Edición' : 'Mostrar Formulario de Edición'}
@@ -92,7 +92,7 @@ export const ParentComponent = () => {
                         className="w-full h-48 object-cover rounded-t-lg mb-4"
                     />
                     <button
-                        className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 w-full"
+                        className="mb-4 px-4 py-2 bg-gray-900 text-white rounded hover:bg-blue-700 w-full"
                         onClick={toggleReverseForm}
                     >
                         {showReverseForm ? 'Ocultar Formulario de Reversión' : 'Mostrar Formulario de Reversión'}

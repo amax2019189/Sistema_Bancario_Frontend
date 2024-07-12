@@ -23,18 +23,17 @@ export const ParentComponent = () => {
         };
 
         fetchAccounts();
+        //hola
     }, []);
 
     const handleAccountClick = (account) => {
         setSelectedAccount(account);
     };
 
-    // ... (resto del código existente)
 
     return (
         <>
             {/* ... (código existente del navbar) */}
-            
             <div className="right w-full flex gap-2 flex-col ml-80">
                 <div className="accounts-list">
                     <h2>Mis Cuentas</h2>

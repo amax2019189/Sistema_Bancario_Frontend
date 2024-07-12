@@ -44,7 +44,7 @@ export default function Sidebar() {
                         alt="User Avatar"
                     />
                     <div className="flex flex-col items-center">
-                        <span className="font-semibold text-lg text-emerald-700 text-[28px] uppercase">
+                        <span className="font-semibold text-lg text-red-50 text-[28px] uppercase">
                             {userData.name}
                         </span>
                         <span className="text-white text-[20px]">{userData.email}</span>
@@ -57,7 +57,7 @@ export default function Sidebar() {
             ) : (
                 <p>Error al iniciar sesion de usuario...</p>
             )}
-            <div className="bg-cyan-600 w-full h-full ">
+            <div className="bg-gray-900 w-full h-full ">
                 <ul className="px-[4rem] space-y-6  rounded-lg mt-[3rem]">
                     <li>
                         <a

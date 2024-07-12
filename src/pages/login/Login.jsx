@@ -12,11 +12,11 @@ import { useLogin } from '../../shared/hooks/useLogin';
 import Navbar from "../../components/Navbar";
 import NavbarHome from "../../components/NavbarHome";
 
-export const Login = ( { switchAuthHandler } ) => {
+export const Login = ({ switchAuthHandler }) => {
     const { login, isLoading } = useLogin();
     const navigate = useNavigate();
 
-    const [formState, setFormState] = useState( {
+    const [formState, setFormState] = useState({
         email: {
             value: '',
             isValid: false,
@@ -27,48 +27,48 @@ export const Login = ( { switchAuthHandler } ) => {
             isValid: false,
             showError: false,
         }
-    } );
+    });
 
-    const handleInputValueChange = ( value, field ) => {
-        setFormState( ( prevState ) => ( {
+    const handleInputValueChange = (value, field) => {
+        setFormState((prevState) => ({
             ...prevState,
             [field]: {
                 ...prevState[field],
                 value
             }
-        } ) );
+        }));
     };
 
-    const handleInputValidationOnBlur = ( value, field ) => {
+    const handleInputValidationOnBlur = (value, field) => {
         let isValid = false;
-        switch ( field ) {
+        switch (field) {
             case 'email':
-                isValid = validateEmail( value );
+                isValid = validateEmail(value);
                 break;
             case 'password':
-                isValid = validatePassword( value );
+                isValid = validatePassword(value);
                 break;
             default:
                 break;
         }
-        setFormState( ( prevState ) => ( {
+        setFormState((prevState) => ({
             ...prevState,
             [field]: {
                 ...prevState[field],
                 isValid,
                 showError: !isValid
             }
-        } ) );
+        }));
     };
 
-    const handleLogin = async ( event ) => {
+    const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            await login( formState.email.value, formState.password.value );
-            navigate( '/user' );
+            await login(formState.email.value, formState.password.value);
+            navigate('/user');
 
-        } catch ( e ) {
-            console.error( 'Error during login: ', e );
+        } catch (e) {
+            console.error('Error during login: ', e);
         }
 
     };
@@ -81,7 +81,7 @@ export const Login = ( { switchAuthHandler } ) => {
                 {`
               .login_img_section {
                 background: linear-gradient(rgba(2,2,2,.7),rgba(0,0,0,.7)),
-                            url(https://images.unsplash.com/photo-1606046604972-77cc76aee944?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) center center;
+                            url(https://images.unsplash.com/photo-1556740714-a8395b3bf30f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) center center;
               }
             `}
             </style>

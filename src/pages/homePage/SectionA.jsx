@@ -17,9 +17,6 @@ function SectionA() {
                             <h1 className="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0">
                                 Nuestros servicios
                             </h1>
-                            <p className="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0">
-                                Nuestros servicios se balbalaldjfalkdjfpdajoidsajdf safdia
-                            </p>
                         </div>
                     </div>
                     <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
@@ -28,69 +25,20 @@ function SectionA() {
                                 <img alt="content" className="object-cover object-center h-full w-full" src="https://cdn.kambista.com/wp-content/uploads/2023/01/cover-blog-Que-son-las-divisas-y-para-que-sirven-e1674862614414.jpg" />
                             </div>
                             <h2 className="text-xl font-medium title-font text-white mt-5">Divisas</h2>
-                            <p className="text-base leading-relaxed mt-2">
-                                Swag shoindxgoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO.
-                            </p>
-                            <a className="text-indigo-400 inline-flex items-center mt-3">
-                                Learn More
-                                <svg
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    className="w-4 h-4 ml-2"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
+
                         </div>
                         <div className="p-4 md:w-1/3 sm:mb-0 mb-6">
                             <div className="rounded-lg h-64 overflow-hidden">
                                 <img alt="content" className="object-cover object-center h-full w-full" src="https://www.bbva.com/wp-content/uploads/2019/11/transferencias2.jpg" />
                             </div>
                             <h2 className="text-xl font-medium title-font text-white mt-5">Transferencias</h2>
-                            <p className="text-base leading-relaxed mt-2">
-                                Swag shoindxigoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO.
-                            </p>
-                            <a className="text-indigo-400 inline-flex items-center mt-3">
-                                Learn More
-                                <svg
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    className="w-4 h-4 ml-2"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
+
                         </div>
                         <div className="p-4 md:w-1/3 sm:mb-0 mb-6">
                             <div className="rounded-lg h-64 overflow-hidden">
                                 <img alt="content" className="object-cover object-center h-full w-full" src="https://cdn-3.expansion.mx/dims4/default/5ae5fb0/2147483647/strip/true/crop/1218x861+0+0/resize/1800x1272!/format/webp/quality/80/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F03%2F49%2F09eb099f47d996deb18fc3bf29f9%2Fistock-1364208507.jpg" />
                             </div>
                             <h2 className="text-xl font-medium title-font text-white mt-5">Estados de cuenta</h2>
-                            <p className="text-base leading-relaxed mt-2">
-                                Swag shoindegoitch literally meditation subway tile tumblr cold-pressed. Gastropub street art beard dreamcatcher neutra, ethical XOXO.
-                            </p>
-                            <a className="text-indigo-400 inline-flex items-center mt-3">
-                                Learn More
-                                <svg
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    className="w-4 h-4 ml-2"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
                         </div>
                     </div>
                 </div>
