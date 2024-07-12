@@ -26,7 +26,7 @@ export const login = async (data) => {
     try {
         return await apiClient.post('/auth/login', data);
 
-        const { userDetails, token } = response.data; // Verifica que el destructuring sea correcto
+        const { userDetails, token } = response.data;
 
         //console.log( "User data from API:", userDetails );
 
