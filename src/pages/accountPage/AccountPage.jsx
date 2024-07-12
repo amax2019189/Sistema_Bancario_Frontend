@@ -12,16 +12,16 @@ import { useUserDetails } from '../../shared/hooks';
 import useAutoLogout from '../../shared/hooks/useAutoLogout'; // Ajusta la ruta según tu estructura de proyecto
 import Sidebar from '../../components/sidebar/Sidebar';
 
-const NavButton = ( { text, id, onClickHandler } ) => {
+const NavButton = ({ text, id, onClickHandler }) => {
     return (
-        <span className="nav-button" id={id} onClick={() => onClickHandler( id )} style={{ color: 'white', cursor: 'pointer' }}>
+        <span className="nav-button" id={id} onClick={() => onClickHandler(id)} style={{ color: 'white', cursor: 'pointer' }}>
             {text}
         </span>
     );
 };
 
 const AccountPage = () => {
-    const [userData, setUserData] = useState( null );
+    const [userData, setUserData] = useState(null);
     const { isLogged, logout } = useUserDetails();
 
     const handleLogout = () => {
@@ -30,17 +30,17 @@ const AccountPage = () => {
 
     useAutoLogout(); // Inicializa el hook para el auto logout
 
-    useEffect( () => {
+    useEffect(() => {
         const getUserDataFromLocalStorage = () => {
-            const user = localStorage.getItem( "user" );
-            if ( user ) {
-                const parsedUser = JSON.parse( user );
-                setUserData( parsedUser );
+            const user = localStorage.getItem("user");
+            if (user) {
+                const parsedUser = JSON.parse(user);
+                setUserData(parsedUser);
             }
         };
 
         getUserDataFromLocalStorage();
-    }, [] );
+    }, []);
 
     return (
         <>

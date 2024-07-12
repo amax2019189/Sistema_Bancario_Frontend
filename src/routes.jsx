@@ -33,8 +33,8 @@ const routes = [
   { path: '/accountBalance', element: <AccountBalance /> },
   { path: '/registerService', element: <RegisterServiceForm /> },
   { path: '/loans', element: <loanParentComponent /> },
-  { path: '/activateAccount', element: <ActivateAccount/>},
-  { path: '/deactivateAccount', element: <DeactivateAccount/>}
+  { path: '/activateAccount', element: <ActivateAccount /> },
+  { path: '/deactivateAccount', element: <DeactivateAccount /> }
 ];
 
 export default routes;
