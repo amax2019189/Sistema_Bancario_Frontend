@@ -1,40 +1,40 @@
 import { data } from 'autoprefixer'
 import axios from 'axios'
 
-const apiClient = axios.create( {
+const apiClient = axios.create({
     baseURL: 'http://127.0.0.1:8080/sistemaBancario/v1',
     timeout: 5000
-} );
+});
 
 apiClient.interceptors.request.use(
-    ( config ) => {
-        const userDetails = localStorage.getItem( 'user' );
+    (config) => {
+        const userDetails = localStorage.getItem('user');
 
-        if ( userDetails ) {
-            const token = JSON.parse( userDetails ).token;
+        if (userDetails) {
+            const token = JSON.parse(userDetails).token;
             config.headers.Authorization = `Bearer ${token}`;
         }
-        console.log( 'Request Headers:', config.headers );
+        console.log('Request Headers:', config.headers);
         return config;
     },
-    ( e ) => {
-        return Promise.reject( e );
+    (e) => {
+        return Promise.reject(e);
     }
 );
 
-export const login = async ( data ) => {
+export const login = async (data) => {
     try {
-        return await apiClient.post( '/auth/login', data );
+        return await apiClient.post('/auth/login', data);
 
         const { userDetails, token } = response.data; // Verifica que el destructuring sea correcto
 
         //console.log( "User data from API:", userDetails );
 
-       // localStorage.setItem( 'user', JSON.stringify( userDetails ) );
+        // localStorage.setItem( 'user', JSON.stringify( userDetails ) );
         //localStorage.setItem( 'token', token ); // Almacena el token como string, no JSON
 
         //return { userDetails, token };
-    } catch ( error ) {
+    } catch (error) {
         return {
             error: true,
             message: error.response?.data?.message || "Ocurrió un error al iniciar sesión"
@@ -42,10 +42,10 @@ export const login = async ( data ) => {
     }
 };
 
-export const register = async ( data ) => {
+export const register = async (data) => {
     try {
-        return await apiClient.post( '/auth/register', data );
-    } catch ( e ) {
+        return await apiClient.post('/auth/register', data);
+    } catch (e) {
         return {
             error: true,
             e
@@ -53,10 +53,10 @@ export const register = async ( data ) => {
     }
 };
 
-export const makeDeposit = async ( data ) => {
+export const makeDeposit = async (data) => {
     try {
-        return await apiClient.post( '/deposit/makeDeposit', data );
-    } catch ( e ) {
+        return await apiClient.post('/deposit/makeDeposit', data);
+    } catch (e) {
         return {
             error: true,
             e
@@ -64,10 +64,10 @@ export const makeDeposit = async ( data ) => {
     }
 };
 
-export const editDeposit = async ( data ) => {
+export const editDeposit = async (data) => {
     try {
-        return await apiClient.put( '/deposit/editDeposit', data );
-    } catch ( e ) {
+        return await apiClient.put('/deposit/editDeposit', data);
+    } catch (e) {
         return {
             error: true,
             e
@@ -75,10 +75,10 @@ export const editDeposit = async ( data ) => {
     }
 };
 
-export const reverseDeposit = async ( data ) => {
+export const reverseDeposit = async (data) => {
     try {
-        return await apiClient.delete( '/deposit/reverseDeposit', { data } );
-    } catch ( e ) {
+        return await apiClient.delete('/deposit/reverseDeposit', { data });
+    } catch (e) {
         return {
             error: true,
             e
@@ -86,21 +86,21 @@ export const reverseDeposit = async ( data ) => {
     }
 };
 
-export const registerService = async ( data ) => {
+export const registerService = async (data) => {
     try {
-        return await apiClient.post( '/service/register', data );
-    } catch ( e ) {
+        return await apiClient.post('/service/register', data);
+    } catch (e) {
         return {
             error: true,
             e
         };
     }
 };
-export const editUser = async ( id, data ) => {
+export const editUser = async (id, data) => {
     try {
-        const response = await apiClient.put( `/user/update/${id}`, data );
+        const response = await apiClient.put(`/user/update/${id}`, data);
         return response.data;
-    } catch ( e ) {
+    } catch (e) {
         return {
             error: true,
             e
@@ -109,10 +109,10 @@ export const editUser = async ( id, data ) => {
 };
 
 //get user
-export const getUser = async ( id ) => {
+export const getUser = async (id) => {
     try {
-        return await apiClient.get( `/user/get/${id}` );
-    } catch ( e ) {
+        return await apiClient.get(`/user/get/${id}`);
+    } catch (e) {
         return {
             error: true,
             e
@@ -120,13 +120,13 @@ export const getUser = async ( id ) => {
     }
 };
 
-export const paymentService = async ( data ) => {
+export const paymentService = async (data) => {
     try {
-        console.log( data )
-        return await apiClient.post( '/service/pay', data )
+        console.log(data)
+        return await apiClient.post('/service/pay', data)
 
 
-    } catch ( e ) {
+    } catch (e) {
         return {
             error: true,
             e
@@ -136,8 +136,8 @@ export const paymentService = async ( data ) => {
 
 export const paidServices = async () => {
     try {
-        return await apiClient.get( '/service/paid' )
-    } catch ( e ) {
+        return await apiClient.get('/service/paid')
+    } catch (e) {
         return {
             error: true,
             e
@@ -147,8 +147,8 @@ export const paidServices = async () => {
 
 export const accountbalance = async () => {
     try {
-        return await apiClient.get( '/account/saldo' )
-    } catch ( e ) {
+        return await apiClient.get('/account/saldo')
+    } catch (e) {
         return {
             error: true,
             e
@@ -156,10 +156,10 @@ export const accountbalance = async () => {
     }
 }
 
-export const createAccount = async ( data ) => {
+export const createAccount = async (data) => {
     try {
-        return await apiClient.post( '/account/createAccount', data )
-    } catch ( e ) {
+        return await apiClient.post('/account/createAccount', data)
+    } catch (e) {
         return {
             error: true,
             e
@@ -167,10 +167,10 @@ export const createAccount = async ( data ) => {
     }
 }
 
-export const deleteAccount = async ( data ) => {
+export const deleteAccount = async (data) => {
     try {
-        return await apiClient.delete( '/account/deleteAccount', data )
-    } catch ( e ) {
+        return await apiClient.delete('/account/deleteAccount', data)
+    } catch (e) {
         return {
             error: true,
             e
@@ -178,33 +178,33 @@ export const deleteAccount = async ( data ) => {
     }
 }
 
-export const activateAccount = async ( data ) => {
+export const activateAccount = async (data) => {
     try {
-        return await apiClient.post( '/account/activateAccount', data )
-    } catch ( e ) {
+        return await apiClient.post('/account/activateAccount', data)
+    } catch (e) {
         return {
             error: true,
             e
         }
     }
 }
-export const addFavoriteAccount = async ( userId, data ) => {
+export const addFavoriteAccount = async (userId, data) => {
     try {
-        return await apiClient.put( `/user/addFavorite/${userId}`, data );
-    } catch ( e ) {
+        return await apiClient.put(`/user/addFavorite/${userId}`, data);
+    } catch (e) {
         return {
             error: true,
-            error
+            e
         }
     }
 
 };
 
 // Función para eliminar una cuenta favorita
-export const removeFavoriteAccount = async ( userId, accountNumber ) => {
+export const removeFavoriteAccount = async (userId, accountNumber) => {
     try {
-        return await apiClient.put( `/user/removeFavorite/${userId}`, { accountNumber } );
-    } catch ( e ) {
+        return await apiClient.put(`/user/removeFavorite/${userId}`, { accountNumber });
+    } catch (e) {
         return {
             error: true,
             e
@@ -215,10 +215,10 @@ export const removeFavoriteAccount = async ( userId, accountNumber ) => {
 };
 
 // Función para actualizar el alias de una cuenta favorita
-export const updateFavoriteAlias = async ( userId, accountNumber, alias ) => {
+export const updateFavoriteAlias = async (userId, accountNumber, alias) => {
     try {
-        return await apiClient.put( `/user/updateFavoriteAlias/${userId}`, { accountNumber, alias } );
-    } catch ( e ) {
+        return await apiClient.put(`/user/updateFavoriteAlias/${userId}`, { accountNumber, alias });
+    } catch (e) {
         return {
             error: true,
             e
@@ -228,10 +228,10 @@ export const updateFavoriteAlias = async ( userId, accountNumber, alias ) => {
 };
 
 // makeTransfer routes
-export const makeTransfer = async ( data ) => {
+export const makeTransfer = async (data) => {
     try {
-        return await apiClient.post( '/transfer/makeTransfer', data );
-    } catch ( e ) {
+        return await apiClient.post('/transfer/makeTransfer', data);
+    } catch (e) {
         return {
             error: true,
             e
