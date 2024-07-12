@@ -30,7 +30,7 @@ export const login = async ( data ) => {
 
         //console.log( "User data from API:", userDetails );
 
-       // localStorage.setItem( 'user', JSON.stringify( userDetails ) );
+        // localStorage.setItem( 'user', JSON.stringify( userDetails ) );
         //localStorage.setItem( 'token', token ); // Almacena el token como string, no JSON
 
         //return { userDetails, token };
@@ -147,8 +147,8 @@ export const paidServices = async () => {
 
 export const accountbalance = async () => {
     try {
-        
-        return await apiClient.get( '/account/account/saldo' )
+
+        return await apiClient.get( '/account/account/account/saldo' )
 
     } catch ( e ) {
         return {
@@ -158,7 +158,7 @@ export const accountbalance = async () => {
     }
 }
 
-export const createAccount = async (data) => {
+export const createAccount = async ( data ) => {
     try {
         return await apiClient.post( '/account/createAccount', data )
     } catch ( e ) {
@@ -169,7 +169,7 @@ export const createAccount = async (data) => {
     }
 }
 
-export const deleteAccount = async (data) => {
+export const deleteAccount = async ( data ) => {
     try {
         return await apiClient.delete( '/account/deleteAccount', data )
     } catch ( e ) {
@@ -180,7 +180,7 @@ export const deleteAccount = async (data) => {
     }
 }
 
-export const activateAccount = async (data) => {
+export const activateAccount = async ( data ) => {
     try {
         return await apiClient.post( '/account/activateAccount', data )
     } catch ( e ) {
