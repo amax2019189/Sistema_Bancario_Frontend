@@ -3,31 +3,27 @@ import toast from "react-hot-toast";
 import { getNonApproved as getNonApprovedRequest } from "../../services";
 
 export const useGetNonApproveLoans = () => {
-    const [loans, setLoans] = useState([])
+    const [loans, setLoans] = useState(null)
+    const [isFetching, setIsFetching] = useState(false);
 
-    const getNonApproved = async (isLogged = false) => {
-        const loansData = await getNonApprovedRequest()
 
-        if (servicesData.error) {
-            return toast.error(
-                servicesData.e?.response?.data || 'Ocurrio un error al mostrar prestamos'
-            )
+    const getNonApproved = async () => {
+        setIsFetching(true);
+        try {
+            const loansData = await getNonApprovedRequest();
+
+                setLoans(loansData.data);
+
+        } catch (error) {
+            toast.error('Ocurrió un error al mostrar préstamos');
+        } finally {
+            setIsFetching(false);
         }
+    };
 
-        if(isLogged){
-            return setLoans({
-                loans:loansData.data.nonApprovedLoans
-            })
-        }
-        setLoans({
-            loans:loansData.data.nonApprovedLoans
-        })
-
-    }
-
-    return{
+    return {
         getNonApproved,
-        isFetching: !Boolean(loans),
-        allLoans: loans?.nonApprovedLoans
-    }
-}
+        isFetching,
+        allLoans: loans || []
+    };
+};
