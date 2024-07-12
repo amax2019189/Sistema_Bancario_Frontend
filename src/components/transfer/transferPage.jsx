@@ -1,42 +1,42 @@
 import React, { useState } from 'react';
 import Sidebar from '../sidebar/Sidebar';
-//import useTransfer from '../../shared/hooks/useTransfer';
+import { useTransfer } from '../../shared/hooks';
 import { useFavorites } from '../../shared/hooks/useFavorites';
 import toast from 'react-hot-toast';
 import HeadPage from '../HeadPage';
 import HeaderTransfer from './HeaderTransfer';
 
-const TransferForm = ({ onSubmit, isLoading }) => {
+const TransferForm = ( { onSubmit, isLoading } ) => {
   const { makeTransfer } = useTransfer();
   const { addFavorite } = useFavorites();
-  const userForId = localStorage.getItem('user')
-  const { _id } = JSON.parse(userForId);
-  const [formData, setFormData] = useState({
+  const userForId = localStorage.getItem( 'user' )
+  const { _id } = JSON.parse( userForId );
+  const [formData, setFormData] = useState( {
     accountNumberOrigen: '',
     accountNumberDestino: '',
     amount: '',
     description: '',
     saveAsFavorite: false,
     alias: ''
-  });
+  } );
 
-  const handleChange = (e) => {
+  const handleChange = ( e ) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prevState => ({
+    setFormData( prevState => ( {
       ...prevState,
       [name]: type === 'checkbox' ? checked : value
-    }));
+    } ) );
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async ( e ) => {
     e.preventDefault();
     try {
-      await makeTransfer(formData);
-      if (formData.saveAsFavorite) {
-        await addFavorite(_id, { accountNumber: formData.accountNumberDestino, alias: formData.alias });
+      await makeTransfer( formData );
+      if ( formData.saveAsFavorite ) {
+        await addFavorite( _id, { accountNumber: formData.accountNumberDestino, alias: formData.alias } );
       }
-      toast.success('Transferencia realizada exitosamente');
-    } catch (err) {
+      toast.success( 'Transferencia realizada exitosamente' );
+    } catch ( err ) {
       // Error handling is done inside the hooks
     }
   };
