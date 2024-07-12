@@ -2,49 +2,61 @@ import { useState } from "react";
 import { DepositForm } from "./DepositForm";
 import { EditDepositForm } from "./EditDepositForm";
 import { ReverseDepositForm } from "./ReverseDepositForm";
+import { RegisterServiceForm } from "../../pages/registerService/registerServiceForm";
 import React, { useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import HeadPage from "../HeadPage";
 
 
 export const ParentComponent = () => {
-    const [showDepositForm, setShowDepositForm] = useState(false);
-    const [showEditForm, setShowEditForm] = useState(false);
-    const [showReverseForm, setShowReverseForm] = useState(false)
+    const [showDepositForm, setShowDepositForm] = useState( false );
+    const [showEditForm, setShowEditForm] = useState( false );
+    const [showReverseForm, setShowReverseForm] = useState( false )
+    const [showServiceForm, setShowServiceForm] = useState( false );
 
     const toggleDepositForm = () => {
-        setShowDepositForm(!showDepositForm);
-        setShowEditForm(false); // Ensure only one form is shown at a time
-        setShowReverseForm(false)
+        setShowDepositForm( !showDepositForm );
+        setShowEditForm( false );
+        setShowReverseForm( false )
+        setShowServiceForm( false )
     };
 
     const toggleEditForm = () => {
-        setShowEditForm(!showEditForm);
-        setShowDepositForm(false); // Ensure only one form is shown at a time
-        setShowReverseForm(false)
+        setShowEditForm( !showEditForm );
+        setShowDepositForm( false );
+        setShowReverseForm( false )
+        setShowServiceForm( false )
     };
 
     const toggleReverseForm = () => {
-        setShowReverseForm(!showReverseForm);
-        setShowDepositForm(false); // Ensure only one form is shown at a time
-        setShowEditForm(false);
+        setShowReverseForm( !showReverseForm );
+        setShowDepositForm( false );
+        setShowEditForm( false );
+        setShowServiceForm( false )
     };
 
+    //toggle Service register
+    const toggleServiceForm = () => {
+        setShowServiceForm( !showServiceForm )
+        setShowDepositForm( false );
+        setShowEditForm( false );
+        setShowReverseForm( false )
+    }
 
-    const [userData, setUserData] = useState(null);
+    const [userData, setUserData] = useState( null );
 
-    useEffect(() => {
+    useEffect( () => {
         // Función para obtener los datos del usuario desde localStorage
         const getUserDataFromLocalStorage = () => {
-            const user = localStorage.getItem("user");
-            if (user) {
-                const parsedUser = JSON.parse(user);
-                setUserData(parsedUser);
+            const user = localStorage.getItem( "user" );
+            if ( user ) {
+                const parsedUser = JSON.parse( user );
+                setUserData( parsedUser );
             }
         };
 
         getUserDataFromLocalStorage();
-    }, []);
+    }, [] );
 
     return (
         <>
@@ -99,6 +111,22 @@ export const ParentComponent = () => {
                     </button>
                     {showReverseForm && <ReverseDepositForm />}
                 </div>
+
+                <div className="card bg-white rounded-lg shadow-md p-6 border border-gray-200 w-full max-w-2xl">
+                    <img
+                        src="https://st3.depositphotos.com/1007283/15266/i/450/depositphotos_152667528-stock-photo-registration-printed-on-rubber-stamp.jpg"
+                        alt="Imagen de Registro de Servicio"
+                        className="w-full h-48 object-cover rounded-t-lg mb-4"
+                    />
+                    <button
+                        className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 w-full"
+                        onClick={toggleServiceForm}
+                    >
+                        {showServiceForm ? 'Ocultar Formulario de Registro de Servicio' : 'Mostrar Formulario de Registro de Servicio'}
+                    </button>
+                    {showServiceForm && <RegisterServiceForm />}
+                </div>
+
             </div>
         </>
     );
