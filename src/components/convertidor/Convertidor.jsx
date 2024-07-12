@@ -45,6 +45,7 @@ function App() {
         <>
             <div id="bodyConversonr" className="h-screen absolute">
                 <Sidebar />
+
                 <div classname="absolute gap-2 flex-col">
                     <div className="ml-[55rem]"> <section className="converter">
                         <form onSubmit={handleSubmit}>
