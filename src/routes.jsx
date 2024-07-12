@@ -14,12 +14,12 @@ import { AccountBalance } from './components/accountBalance/AccountBalance.jsx';
 import EditUser from './components/account/updateAccount.jsx';
 import { RegisterServiceForm } from '../src/pages/registerService/registerServiceForm.jsx';
 import { CreateAccountForm } from './components/accounts/CreateAccount.jsx'
-import { LoanApproved } from './components/loan/loanApproved.jsx'
-import { loanParentComponent } from './components/loan/loanParentComponent.jsx';
+import { LoanApproved } from './components/loan/LoanApproved.jsx'
+import { LoanParentComponent } from './components/loan/LoanParentComponent.jsx';
 import { ActivateAccount } from './components/accounts/ActivateAccount.jsx';
 import { DeactivateAccount } from './components/accounts/DesactivatedAccount.jsx';
 import StatusAccount from './components/StatusAccount.jsx';
-
+import {LoanGetApproved} from './components/loan/LoanGetApproved.jsx'
 // Routes
 const routes = [
   { path: '/auth', element: <AuthPage /> },
@@ -34,15 +34,15 @@ const routes = [
   { path: '/services', element: <PayService /> },
   { path: '/accountBalance', element: <AccountBalance /> },
   { path: '/registerService', element: <RegisterServiceForm /> }, ,
-  { path: '/loans', element: <loanParentComponent /> },
+  { path: '/loanParentComponent', element: <LoanParentComponent /> },
   { path: '/Approved', element: <LoanApproved /> },
   { path: '/loansApproved', element: <LoanGetApproved /> },
   { path: '/activateAccount', element: <ActivateAccount/>},
   { path: '/deactivateAccount', element: <DeactivateAccount/>},
-  { path: '/nonApproved', element: <LoanComponent/>},
   { path: '/stateAccount', element: <StatusAccount /> },
-
-
+  { path: '/PaidServices', element: <PaidServices /> },
+  { path: '/EditUser', element: <EditUser /> },
+  { path: '/CreateAccountForm', element: <CreateAccountForm /> },
 ];
 
 export default routes;

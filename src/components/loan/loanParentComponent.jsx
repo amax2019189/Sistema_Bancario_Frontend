@@ -1,11 +1,11 @@
 import { useState } from "react";
-import loanWithdrawal from './loanWithdrawalComponent'
-import loanPayment from './loanPaymentComponent'
+import LoanWithdrawal from './LoanWithdrawalComponent'
+import LoanPayment from './LoanPaymentComponent'
 import { useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import HeadPage from "../HeadPage";
 
-export const loanParentComponent = () => {
+export const LoanParentComponent = () => {
     const [showLoanWithdrawal, setShowLoanWithdrawal] = useState( false );
     const [showLoanPayment, setShowLoanPayment] = useState( false );
 
@@ -62,8 +62,8 @@ export const loanParentComponent = () => {
                             Pay Loan
                         </button>
                     </div>
-                    {showLoanWithdrawal && <loanWithdrawal />}
-                    {showLoanPayment && <loanPayment />}
+                    {showLoanWithdrawal && <LoanWithdrawal />}
+                    {showLoanPayment && <LoanPayment />}
                 </div>
             </div>
         </>
