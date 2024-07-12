@@ -3,7 +3,7 @@ import { AuthPage } from '../src/pages/auth'
 import HomePage from './pages/homePage/HomePage.jsx'
 import Prueba from './pages/prueba/prueba.jsx';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import TransferPage from './components/transfer/transferPage.jsx';
+import {TransferPage} from './components/transfer/transferPage.jsx';
 import AccountPage from './pages/accountPage/AccountPage.jsx';
 import { ParentComponent } from './components/deposits/ParentDepositComponent.jsx';
 import AccountDetails from './components/account/account.jsx';
@@ -36,10 +36,13 @@ const routes = [
   { path: '/registerService', element: <RegisterServiceForm /> }, ,
   { path: '/loans', element: <loanParentComponent /> },
   { path: '/Approved', element: <LoanApproved /> },
-  { path: '/activateAccount', element: <ActivateAccount /> },
-  { path: '/deactivateAccount', element: <DeactivateAccount /> },
+  { path: '/loansApproved', element: <LoanGetApproved /> },
+  { path: '/activateAccount', element: <ActivateAccount/>},
+  { path: '/deactivateAccount', element: <DeactivateAccount/>},
+  { path: '/nonApproved', element: <LoanComponent/>},
   { path: '/stateAccount', element: <StatusAccount /> },
   { path: '/editUser', element: <EditUser /> },
+
 
 ];
 

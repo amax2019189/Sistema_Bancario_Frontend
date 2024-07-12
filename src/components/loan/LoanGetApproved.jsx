@@ -23,10 +23,11 @@ export const LoanGetApproved = () => {
             <ul>
                 {allLoans.map((loan, index) => (
                     <li key={index} className='loan-item'>
-                        <h3>Loan Service: {loan.service}</h3>
+                        <h3>User: {loan.userDPI}</h3>
+                        <p>Name: {loan.userName}</p>
+                        <p>LastName: {loan.userLastName}</p>
                         <p>Account Number: {loan.account}</p>
                         <p>Amount: ${loan.amount}</p>
-                        <p>Description: {loan.description}</p>
                         <p>Date: {new Date(loan.loanDate).toLocaleDateString()}</p>
                     </li>
                 ))}

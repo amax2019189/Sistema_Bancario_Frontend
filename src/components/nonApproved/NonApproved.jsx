@@ -15,7 +15,7 @@ export const LoanComponent = () => {
         };
 
         fetchNonApprovedLoans();
-    }, [getNonApproved]);
+    }, []);
 
     return (
         <div>

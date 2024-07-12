@@ -11,7 +11,7 @@ export const useGetApproveLoans = () => {
             if (loansData.error) {
                 toast.error(loansData.e?.response?.data || 'Ocurrió un error al mostrar préstamos');
             } else {
-                setLoans(loansData.data.approvedLoans);
+                setLoans(loansData.data);
             }
         } catch (error) {
             toast.error('Ocurrió un error al mostrar préstamos');
