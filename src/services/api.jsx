@@ -26,7 +26,7 @@ export const login = async ( data ) => {
     try {
         const response = await apiClient.post( '/auth/login', data );
 
-        const { userDetails, token } = response.data; // Verifica que el destructuring sea correcto
+        const { userDetails, token } = response.data;
 
         console.log( "User data from API:", userDetails );
 
@@ -155,3 +155,41 @@ export const accountbalance = async () => {
         }
     }
 }
+export const addFavoriteAccount = async ( userId, data ) => {
+    try {
+        return await apiClient.put( `/user/addFavorite/${userId}`, data );
+    } catch ( e ) {
+        return {
+            error: true,
+            error
+        }
+    }
+
+};
+
+// Función para eliminar una cuenta favorita
+export const removeFavoriteAccount = async ( userId, accountNumber ) => {
+    try {
+        return await apiClient.put( `/user/removeFavorite/${userId}`, { accountNumber } );
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+
+    }
+
+};
+
+// Función para actualizar el alias de una cuenta favorita
+export const updateFavoriteAlias = async ( userId, accountNumber, alias ) => {
+    try {
+        return await apiClient.put( `/user/updateFavoriteAlias/${userId}`, { accountNumber, alias } );
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+
+};
