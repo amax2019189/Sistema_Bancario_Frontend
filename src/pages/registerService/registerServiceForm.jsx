@@ -1,176 +1,95 @@
 import React, { useState } from 'react';
 import { InputService } from '../../components/imputService/imputService';
 import { useRegisterService } from '../../shared/hooks/useRegisterService';
+import toast from 'react-hot-toast'; 
+import { registerService } from '../../services/api';
+
 
 export const RegisterServiceForm = () => {
-    const { registerService, isLoading } = useRegisterService();
     const [formData, setFormData] = useState({
         email: '',
+        username: '',
         companyCode: '',
         companyName: '',
-        username: '',
+        password: '',
         numbercel: '',
         address: '',
         namwork: '',
-        password: '',
-        roleUser: '',
         monthlyincome: '',
-        accountType: ''
+        accountType: '',
     });
 
-    const handleChange = (value, field) => {
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+
+    const handleChange = (e) => {
         setFormData({
             ...formData,
-            [field]: value
+            [e.target.name]: e.target.value
         });
-    };
-
-    const handleBlur = (value, field) => {
-        // Puede añadir lógica de validación aquí si es necesario
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await registerService(
-            formData.email,
-            formData.companyCode,
-            formData.companyName,
-            formData.username,
-            formData.numbercel,
-            formData.address,
-            formData.namwork,
-            formData.password,
-            formData.roleUser,
-            formData.monthlyincome,
-            formData.accountType
-        );
+        setLoading(true);
+
+        try {
+            const response = await registerService(formData);
+
+            if (response.error) {
+                setError(response.error.message || 'Error en el registro del servicio');
+            } else {
+                console.log(response); // Manejar la respuesta exitosa según lo necesites
+                setError(null);
+                // Aquí podrías redirigir a una página de éxito o hacer otra acción necesaria
+            }
+        } catch (error) {
+            console.error('Error al registrar el servicio:', error);
+            setError('Error al conectar con el servidor');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <InputService
-                field="email"
-                label="Email"
-                value={formData.email}
-                onChangeHandler={handleChange}
-                onBlurHandler={handleBlur}
-                type="email"
-                placeholder="Enter your email"
-                showErrorMessage={false}
-                validationMessage=""
-            />
-            <InputService
-                field="companyCode"
-                label="Company Code"
-                value={formData.companyCode}
-                onChangeHandler={handleChange}
-                onBlurHandler={handleBlur}
-                type="text"
-                placeholder="Enter your company code"
-                showErrorMessage={false}
-                validationMessage=""
-            />
-            <InputService
-                field="companyName"
-                label="Company Name"
-                value={formData.companyName}
-                onChangeHandler={handleChange}
-                onBlurHandler={handleBlur}
-                type="text"
-                placeholder="Enter your company name"
-                showErrorMessage={false}
-                validationMessage=""
-            />
-            <InputService
-                field="username"
-                label="Username"
-                value={formData.username}
-                onChangeHandler={handleChange}
-                onBlurHandler={handleBlur}
-                type="text"
-                placeholder="Enter your username"
-                showErrorMessage={false}
-                validationMessage=""
-            />
-            <InputService
-                field="numbercel"
-                label="Cell Number"
-                value={formData.numbercel}
-                onChangeHandler={handleChange}
-                onBlurHandler={handleBlur}
-                type="text"
-                placeholder="Enter your cell number"
-                showErrorMessage={false}
-                validationMessage=""
-            />
-            <InputService
-                field="address"
-                label="Address"
-                value={formData.address}
-                onChangeHandler={handleChange}
-                onBlurHandler={handleBlur}
-                type="text"
-                placeholder="Enter your address"
-                showErrorMessage={false}
-                validationMessage=""
-            />
-            <InputService
-                field="namwork"
-                label="Work Name"
-                value={formData.namwork}
-                onChangeHandler={handleChange}
-                onBlurHandler={handleBlur}
-                type="text"
-                placeholder="Enter your work name"
-                showErrorMessage={false}
-                validationMessage=""
-            />
-            <InputService
-                field="password"
-                label="Password"
-                value={formData.password}
-                onChangeHandler={handleChange}
-                onBlurHandler={handleBlur}
-                type="password"
-                placeholder="Enter your password"
-                showErrorMessage={false}
-                validationMessage=""
-            />
-            <InputService
-                field="roleUser"
-                label="Role User"
-                value={formData.roleUser}
-                onChangeHandler={handleChange}
-                onBlurHandler={handleBlur}
-                type="text"
-                placeholder="Enter your role"
-                showErrorMessage={false}
-                validationMessage=""
-            />
-            <InputService
-                field="monthlyincome"
-                label="Monthly Income"
-                value={formData.monthlyincome}
-                onChangeHandler={handleChange}
-                onBlurHandler={handleBlur}
-                type="text"
-                placeholder="Enter your monthly income"
-                showErrorMessage={false}
-                validationMessage=""
-            />
-            <InputService
-                field="accountType"
-                label="Account Type"
-                value={formData.accountType}
-                onChangeHandler={handleChange}
-                onBlurHandler={handleBlur}
-                type="text"
-                placeholder="Enter your account type"
-                showErrorMessage={false}
-                validationMessage=""
-            />
-            <button type="submit" disabled={isLoading}>Register Service</button>
-        </form>
+        <div>
+            <h2>Register Service Form</h2>
+            {error && <p>{error}</p>}
+            <form onSubmit={handleSubmit}>
+                <label>Email:</label>
+                <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+
+                <label>Username:</label>
+                <input type="text" name="username" value={formData.username} onChange={handleChange} required />
+
+                <label>Company Code:</label>
+                <input type="text" name="companyCode" value={formData.companyCode} onChange={handleChange} required />
+
+                <label>Company Name:</label>
+                <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} required />
+
+                <label>Password:</label>
+                <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+
+                <label>Phone Number:</label>
+                <input type="text" name="numbercel" value={formData.numbercel} onChange={handleChange} required />
+
+                <label>Address:</label>
+                <input type="text" name="address" value={formData.address} onChange={handleChange} required />
+
+                <label>Work Name:</label>
+                <input type="text" name="namwork" value={formData.namwork} onChange={handleChange} required />
+
+                <label>Monthly Income:</label>
+                <input type="text" name="monthlyincome" value={formData.monthlyincome} onChange={handleChange} required />
+
+                <label>Account Type:</label>
+                <input type="text" name="accountType" value={formData.accountType} onChange={handleChange} required />
+
+                <button type="submit" disabled={loading}>
+                    {loading ? 'Registrando...' : 'Registrar Servicio'}
+                </button>
+            </form>
+        </div>
     );
 };
-

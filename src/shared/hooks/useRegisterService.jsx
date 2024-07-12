@@ -1,45 +1,32 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { registerService as registerServiceRequest } from "../../services";
-import toast from "react-hot-toast";
+import { useState } from 'react';
+import { registerService as registerServiceRequest } from '../../services';
+import toast from 'react-hot-toast';
 
 export const useRegisterService = () => {
     const [isLoading, setIsLoading] = useState(false);
 
-    const navigate = useNavigate();
-
-    const registerService = async (email, companyCode, companyName, username, numbercel, address, namwork, password, roleUser, monthlyincome, img, accountType) => {
+    const registerService = async (data) => {
         setIsLoading(true);
+        try {
+            // Remove roleUser from data before sending
+            const { roleUser, ...requestData } = data;
 
-        const response = await registerServiceRequest({
-            email,
-            companyCode,
-            companyName,
-            username,
-            numbercel,
-            address,
-            namwork,
-            password,
-            roleUser,
-            monthlyincome,
-            accountType
-        });
+            const response = await registerServiceRequest(requestData);
+            setIsLoading(false);
 
-        setIsLoading(false);
+            if (response.error) {
+                toast.error(response.e?.response?.data || 'Ocurrió un error al registrar el servicio, intenta de nuevo.');
+                return;
+            }
 
-        if (response.error) {
-            return toast.error(response.e?.response?.data || 'Ocurrió un error al registrarse, intenta de nuevo.');
+            const { userDetails } = response.data;
+            localStorage.setItem('user', JSON.stringify(userDetails));
+            toast.success('Registro de servicio exitoso.');
+        } catch (e) {
+            setIsLoading(false);
+            toast.error('Ocurrió un error al registrar el servicio, intenta de nuevo.');
         }
-
-        const { userDetails } = response.data;
-
-        localStorage.setItem('user', JSON.stringify(userDetails));
-
-        navigate('/auth');
     };
 
-    return {
-        registerService,
-        isLoading
-    };
+    return { registerService, isLoading };
 };

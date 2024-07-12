@@ -12,6 +12,7 @@ apiClient.interceptors.request.use(
 
         if (userDetails) {
             const token = JSON.parse(userDetails).token;
+
             config.headers.Authorization = `Bearer ${token}`;
         }
         console.log('Request Headers:', config.headers);
@@ -24,8 +25,10 @@ apiClient.interceptors.request.use(
 
 export const login = async (data) => {
     try {
-        return await apiClient.post('/auth/login', data);
-    } catch (error) {
+
+        return await apiClient.post( '/auth/login', data );
+
+    } catch ( error ) {
         return {
             error: true,
             message: error.response?.data?.message || "Ocurrió un error al iniciar sesión"
@@ -138,8 +141,15 @@ export const paidServices = async () => {
 
 export const accountbalance = async () => {
     try {
+<<<<<<< HEAD
         return await apiClient.get('/account/account/saldo')
     } catch (e) {
+=======
+
+        return await apiClient.get( '/account/account/saldo' )
+
+    } catch ( e ) {
+>>>>>>> 532c2e12c1c00189c73a72af2ce33bbe99cb384f
         return {
             error: true,
             e
@@ -223,6 +233,30 @@ export const makeTransfer = async (data) => {
     try {
         return await apiClient.post('/transfer/makeTransfer', data);
     } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+};
+
+//withdraw loan
+export const withdrawLoan = async ( data ) => {
+    try {
+        return await apiClient.post( '/banck/withdrawLoan', data );
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+};
+
+//payLoan
+export const payLoan = async ( data ) => {
+    try {
+        return await apiClient.post( '/banck/payloan', data );
+    } catch ( e ) {
         return {
             error: true,
             e
