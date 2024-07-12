@@ -141,15 +141,11 @@ export const paidServices = async () => {
 
 export const accountbalance = async () => {
     try {
-<<<<<<< HEAD
-        return await apiClient.get('/account/account/saldo')
-    } catch (e) {
-=======
 
         return await apiClient.get( '/account/account/saldo' )
 
     } catch ( e ) {
->>>>>>> 532c2e12c1c00189c73a72af2ce33bbe99cb384f
+
         return {
             error: true,
             e
