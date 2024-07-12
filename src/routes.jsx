@@ -43,6 +43,7 @@ const routes = [
   { path: '/PaidServices', element: <PaidServices /> },
   { path: '/EditUser', element: <EditUser /> },
   { path: '/CreateAccountForm', element: <CreateAccountForm /> },
-];
+  { path: '/editUser', element: <EditUser /> },
+
 
 export default routes;
