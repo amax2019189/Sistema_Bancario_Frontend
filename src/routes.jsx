@@ -37,14 +37,16 @@ const routes = [
   { path: '/Approved', element: <LoanApproved /> },
   { path: '/registerService', element: <RegisterServiceForm /> },
   { path: '/loans', element: <loanParentComponent /> },
+<<<<<<< HEAD
   { path: '/loansApproved', element: <LoanGetApproved /> },
   { path: '/activateAccount', element: <ActivateAccount /> },
   { path: '/deactivateAccount', element: <DeactivateAccount /> },
-  { path: '/nonApproved', element: <LoanComponent /> },
+  { path: '/nonApproved', element: <LoanComponent /> }
+=======
   { path: '/activateAccount', element: <ActivateAccount /> },
   { path: '/stateAccount', element: <StatusAccount /> },
   { path: '/deactivateAccount', element: <DeactivateAccount /> }
-
+>>>>>>> f53da801d93bfe249a7d3f3569cec0b5f9338b5a
 ];
 
 export default routes;
