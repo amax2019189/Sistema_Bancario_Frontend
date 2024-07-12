@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { accountbalance as getAccountBalanceRequest } from "../../services";
 import toast from "react-hot-toast";
 
