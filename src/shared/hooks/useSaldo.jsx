@@ -1,34 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { accountbalance as getAccountBalanceRequest } from "../../services";
 import toast from "react-hot-toast";
 
 export const useAccountBalance = () => {
-    const [account, setAccount] = useState([])
+    const [account, setAccount] = useState(null);
+    const [isFetching, setIsFetching] = useState(true);
 
     const getAccount = async (isLogged = false) => {
+        setIsFetching(true);
         
-        const accountData = await getAccountBalanceRequest()
+        const accountData = await getAccountBalanceRequest();
         
-        if(accountData.error){
-            return toast.error(
-                accountData.e?.response?.data || 'Occurrio un error con el Saldo de la ccuenta'
-            )
+        if (accountData.error) {
+            toast.error(
+                accountData.e?.response?.data || 'Ocurrió un error con el saldo de la cuenta'
+            );
+            setIsFetching(false);
+            return;
         }
 
-        if(isLogged){
-            return setAccount({
-                account:accountData.data.accountDetails
-            })
+        if (isLogged) {
+            setAccount(accountData.data.accountDetails);
+        } else {
+            setAccount(accountData.data.accountDetails);
         }
+        
+        setIsFetching(false);
+    };
 
-        setAccount({
-            account: accountData.data.accountDetails
-        })
-    }
+    useEffect(() => {
+        getAccount();
+    }, []);
 
     return {
         getAccount,
-        isFetching: !Boolean(account),
-        allAccount: account?.account
-    }
+        isFetching,
+        accountDetails: account,
+    };
 }
