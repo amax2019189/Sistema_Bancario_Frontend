@@ -12,7 +12,6 @@ import { PayService } from "./components/services/ServicesForm.jsx";
 import { PaidServices } from './components/services/ServicesView.jsx';
 import EditUser from './components/account/updateAccount.jsx';
 import { RegisterServiceForm } from '../src/pages/registerService/registerServiceForm.jsx';
-import { AccountBalance } from './components/accountBalance/AccountBalance.jsx'
 
 // Routes
 const routes = [

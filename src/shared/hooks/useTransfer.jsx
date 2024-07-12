@@ -1,6 +1,6 @@
 import { useState } from 'react'; // Importa el hook useState de React para manejar estados locales en el componente.
 //import makeTransfer
-import { makeTransfer } from '../services/transferService'; // Importa la función makeTransfer
+import { makeTransfer } from '../../services/api'; // Importa la función makeTransfer
 import axios from 'axios'; // Importa la biblioteca axios para realizar solicitudes HTTP
 const useTransfer = () => { // Define un hook personalizado llamado useTransfer.
   const [loading, setLoading] = useState( false ); // Declara un estado local 'loading' para manejar el estado de carga y su función para actualizarlo 'setLoading'.
