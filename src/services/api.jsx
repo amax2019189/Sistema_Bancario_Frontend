@@ -25,15 +25,6 @@ apiClient.interceptors.request.use(
 export const login = async (data) => {
     try {
         return await apiClient.post('/auth/login', data);
-
-        const { userDetails, token } = response.data;
-
-        //console.log( "User data from API:", userDetails );
-
-        // localStorage.setItem( 'user', JSON.stringify( userDetails ) );
-        //localStorage.setItem( 'token', token ); // Almacena el token como string, no JSON
-
-        //return { userDetails, token };
     } catch (error) {
         return {
             error: true,

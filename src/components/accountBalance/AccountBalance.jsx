@@ -1,38 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import { useAccountBalance } from '../../shared/hooks/useSaldo';
 
-export const AccountSummary = () => {
+export const AccountBalance = () => {
     const { getAccount, isFetching, allAccount } = useAccountBalance();
-    const [isLogged, setIsLogged] = useState( false );
+    const [loading, setLoading] = useState(true);
 
-    useEffect( () => {
-        getAccount( isLogged );
-    }, [isLogged] );
+    useEffect(() => {
+        const fetchData = async () => {
+            await getAccount();
+            setLoading(false);
+        };
+        fetchData();
+    }, []);
 
-    if ( isFetching ) {
-        return <div>Cargando...</div>;
+    if (loading || isFetching) {
+        return <div>Loading...</div>;
     }
 
     return (
         <div className="account-balance-container">
-            {allAccount && allAccount.length > 0 ? (
-                allAccount.map( ( account, index ) => (
-                    <div key={index} className="account-details">
-                        <h3>Cuenta Número: {account.accountNumber}</h3>
-                        <p>Tipo de Cuenta: {account.accountType}</p>
-                        <p>Saldo: {account.accountBalance}</p>
-                        <h4>Últimos Movimientos:</h4>
-                        <ul>
-                            {account.movements.map( ( movement, i ) => (
-                                <li key={i}>
-                                    {movement.type} de {movement.amount} el {new Date( movement.createdAt ).toLocaleDateString()}
-                                </li>
-                            ) )}
-                        </ul>
-                    </div>
-                ) )
+            {allAccount.length === 0 ? (
+                <div>No accounts available</div>
             ) : (
-                <div>No hay cuentas disponibles</div>
+                allAccount.map(account => (
+                    <div key={account.accountNumber} className="account-card">
+                        <h3>Account Number: {account.accountNumber}</h3>
+                        <p>Type: {account.accountType}</p>
+                        <p>Balance: ${account.accountBalance}</p>
+                        <h4>Recent Movements:</h4>
+                        {account.movements.length === 0 ? (
+                            <p>No recent movements</p>
+                        ) : (
+                            <ul>
+                                {account.movements.map((movement, index) => (
+                                    <li key={index}>
+                                        <span>{movement.type}: ${movement.amount}</span>
+                                        <span> - {new Date(movement.createdAt).toLocaleString()}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                ))
             )}
         </div>
     );
