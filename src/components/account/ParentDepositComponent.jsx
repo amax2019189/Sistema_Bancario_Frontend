@@ -23,7 +23,7 @@ export const ParentComponent = () => {
         };
 
         fetchAccounts();
-        //hola
+        
     }, []);
 
     const handleAccountClick = (account) => {
