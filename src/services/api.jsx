@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const apiClient = axios.create( {
     baseURL: 'http://127.0.0.1:8080/sistemaBancario/v1',
-    timeout: 2000
+    timeout: 5000
 } );
 
 apiClient.interceptors.request.use(
@@ -11,7 +11,7 @@ apiClient.interceptors.request.use(
         const userDetails = localStorage.getItem( 'user' );
 
         if ( userDetails ) {
-            const { token } = JSON.parse( userDetails );
+            const token = JSON.parse( userDetails ).token;
             config.headers.Authorization = `Bearer ${token}`;
         }
         console.log( 'Request Headers:', config.headers );
@@ -24,16 +24,16 @@ apiClient.interceptors.request.use(
 
 export const login = async ( data ) => {
     try {
-        const response = await apiClient.post( '/auth/login', data );
+        return await apiClient.post( '/auth/login', data );
 
-        const { userDetails, token } = response.data; // Verifica que el destructuring sea correcto
+        //const { userDetails, token } = response.data; // Verifica que el destructuring sea correcto
 
-        console.log( "User data from API:", userDetails );
+        //console.log( "User data from API:", userDetails );
 
-        localStorage.setItem( 'user', JSON.stringify( userDetails ) );
-        localStorage.setItem( 'token', token ); // Almacena el token como string, no JSON
+       // localStorage.setItem( 'user', JSON.stringify( userDetails ) );
+        //localStorage.setItem( 'token', token ); // Almacena el token como string, no JSON
 
-        return { userDetails, token };
+        //return { userDetails, token };
     } catch ( error ) {
         return {
             error: true,
@@ -147,7 +147,9 @@ export const paidServices = async () => {
 
 export const accountbalance = async () => {
     try {
-        return await apiClient.get( '/account/saldo' )
+        
+        return await apiClient.get( '/account/account/saldo' )
+
     } catch ( e ) {
         return {
             error: true,

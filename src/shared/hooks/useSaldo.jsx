@@ -3,32 +3,25 @@ import { accountbalance as getAccountBalanceRequest } from "../../services";
 import toast from "react-hot-toast";
 
 export const useAccountBalance = () => {
-    const [account, setAccount] = useState([])
+    const [account, setAccount] = useState(null);
 
-    const getAccount = async (isLogged = false) => {
-        
-        const accountData = await getAccountBalanceRequest()
-        
-        if(accountData.error){
-            return toast.error(
-                accountData.e?.response?.data || 'Occurrio un error con el Saldo de la ccuenta'
-            )
+    const getAccount = async () => {
+        try {
+            const accountData = await getAccountBalanceRequest();
+
+            if (accountData.error) {
+                toast.error(accountData.e?.response?.data || 'Ocurrió un error con el saldo de la cuenta');
+            } else {
+                setAccount(accountData.data.accountDetails);
+            }
+        } catch (error) {
+            toast.error('Ocurrió un error al obtener los datos de la cuenta');
         }
-
-        if(isLogged){
-            return setAccount({
-                account:accountData.data.accountDetails
-            })
-        }
-
-        setAccount({
-            account: accountData.data.accountDetails
-        })
-    }
+    };
 
     return {
         getAccount,
-        isFetching: !Boolean(account),
-        allAccount: account?.account
-    }
-}
+        isFetching: account === null,
+        allAccount: account || []
+    };
+};
