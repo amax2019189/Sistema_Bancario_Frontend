@@ -13,7 +13,6 @@ import { PaidServices } from './components/services/ServicesView.jsx';
 import { AccountBalance } from './components/accountBalance/AccountBalance.jsx';
 import EditUser from './components/account/updateAccount.jsx';
 import { RegisterServiceForm } from '../src/pages/registerService/registerServiceForm.jsx';
-import { AccountBalance } from './components/accountBalance/AccountBalance.jsx'
 import { CreateAccountForm } from './components/accounts/CreateAccount.jsx'
 
 // Routes
