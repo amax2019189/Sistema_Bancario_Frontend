@@ -14,8 +14,9 @@ import { AccountBalance } from './components/accountBalance/AccountBalance.jsx';
 import EditUser from './components/account/updateAccount.jsx';
 import { RegisterServiceForm } from '../src/pages/registerService/registerServiceForm.jsx';
 import { CreateAccountForm } from './components/accounts/CreateAccount.jsx'
-//loanParentComponent
 import { loanParentComponent } from './components/loan/loanParentComponent.jsx';
+import { ActivateAccount } from './components/accounts/ActivateAccount.jsx';
+import { DeactivateAccount } from './components/accounts/DesactivatedAccount.jsx';
 
 // Routes
 const routes = [
@@ -32,7 +33,8 @@ const routes = [
   { path: '/accountBalance', element: <AccountBalance /> },
   { path: '/registerService', element: <RegisterServiceForm /> },
   { path: '/loans', element: <loanParentComponent /> },
-
+  { path: '/activateAccount', element: <ActivateAccount/>},
+  { path: '/deactivateAccount', element: <DeactivateAccount/>}
 ];
 
 export default routes;
