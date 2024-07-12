@@ -32,7 +32,6 @@ const routes = [
   { path: '/services', element: <PayService /> },
   { path: '/accountBalance', element: <AccountBalance /> },
   { path: '/registerService', element: <RegisterServiceForm /> },
-  { path: '/createAccountForm', element: <CreateAccountForm/>},
   { path: '/loans', element: <loanParentComponent /> },
   { path: '/activateAccount', element: <ActivateAccount/>},
   { path: '/deactivateAccount', element: <DeactivateAccount/>}
