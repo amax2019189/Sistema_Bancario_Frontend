@@ -46,7 +46,7 @@ function App() {
             <Sidebar />
             <div className="ml-80 p-nonel">
                 <div className="top-0 right-0 flex items-center justify-center w-full p-[5rem]">
-                    <div className="flex flex-col md:flex-row items-center gap-[5rem] ml-[8rem] mt-[6rem]">
+                    <div className="flex flex-col md:flex-row items-center gap-[5rem] ml-[10rem] mt-[6rem]">
                         <div className="md:block md:w-1/2 lg:w-2/5  w-auto h-auto">
                             <img
                                 src="../public/svg1banck.svg"
@@ -119,7 +119,8 @@ function App() {
                             {error && <p className="error text-red-500 mt-4">Error: {error}</p>}
                         </div>
                     </div>
-                </div></div>
+                </div>
+            </div>
 
 
         </>

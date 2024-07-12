@@ -37,33 +37,43 @@ export const DeactivateAccount = () => {
   };
 
   return (
-    <div>
-      <h1>Desactivar Cuenta</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="noAccount">Número de Cuenta:</label>
-          <input
-            type="text"
-            id="noAccount"
-            value={noAccount}
-            onChange={(e) => setNoAccount(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="dpi">DPI:</label>
-          <input
-            type="text"
-            id="dpi"
-            value={dpi}
-            onChange={(e) => setDpi(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Desactivando...' : 'Desactivar Cuenta'}
-        </button>
-      </form>
+    <div className="flex justify-center items-center bg-gray-100">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Desactivar Cuenta</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="noAccount" className="block text-gray-700 font-semibold mb-2">Número de Cuenta</label>
+            <input
+              type="text"
+              id="noAccount"
+              value={noAccount}
+              onChange={(e) => setNoAccount(e.target.value)}
+              required
+              placeholder="Numero de cuenta"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
+          </div>
+          <div>
+            <label htmlFor="dpi" className="block text-gray-700 font-semibold mb-2">DPI</label>
+            <input
+              type="text"
+              id="dpi"
+              value={dpi}
+              onChange={(e) => setDpi(e.target.value)}
+              required
+              placeholder="DPI"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full bg-red-500 text-white font-semibold py-2 rounded-lg hover:bg-red-600 transition duration-200"
+          >
+            {isLoading ? 'Desactivando...' : 'Desactivar Cuenta'}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

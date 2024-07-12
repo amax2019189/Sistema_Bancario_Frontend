@@ -31,9 +31,11 @@ function HomePage() {
                                 <div className="mt-4 md:mx-4 md:mt-0">
                                     <h1 className="text-2xl font-semibold text-gray-700 capitalize ">¿Quienes Somos?</h1>
                                     <p className="mt-3 text-gray-500 ">
-                                        Disfruto diseñando productos dinamicos y creativos de principio a fin
-                                        Enfocados en desarrollar experiencias intuitivas que crecen y mejoran
-                                        constantemente para la experiencia de usuario.
+                                        ¡Bienvenido a nuestro sistema bancario en línea! Nos complace tenerte con nosotros.
+                                        Con nuestra plataforma segura y fácil de usar, podrás gestionar tus finanzas,
+                                        realizar transferencias y depósitos, y acceder a una amplia gama de servicios
+                                        bancarios desde la comodidad de tu hogar. Estamos aquí para ayudarte en cada
+                                        paso del camino.
                                     </p>
                                 </div>
                             </div>
@@ -67,13 +69,13 @@ function HomePage() {
                                         Flexibidad
                                     </p>
                                     <p className="mt-3 text-gray-500 ">
-                                        Pensamiento creativo
+                                        Seguridad
                                     </p>
                                     <p className="mt-3 text-gray-500 ">
                                         Trabajo en equipo
                                     </p>
                                     <p className="mt-3 text-gray-500 ">
-                                        Pensamiento crítico
+                                        
                                     </p>
 
                                 </div>
