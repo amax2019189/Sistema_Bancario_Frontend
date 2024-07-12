@@ -11,7 +11,7 @@ apiClient.interceptors.request.use(
         const userDetails = localStorage.getItem( 'user' );
 
         if ( userDetails ) {
-            const token = JSON.parse( userDetails ).token;
+            const { token } = JSON.parse( userDetails );
             config.headers.Authorization = `Bearer ${token}`;
         }
         console.log( 'Request Headers:', config.headers );
@@ -26,7 +26,7 @@ export const login = async ( data ) => {
     try {
         return await apiClient.post( '/auth/login', data );
 
-        const { userDetails, token } = response.data;
+
 
         //console.log( "User data from API:", userDetails );
 
