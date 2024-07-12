@@ -36,8 +36,6 @@ const routes = [
   { path: '/registerService', element: <RegisterServiceForm /> }, ,
   { path: '/loans', element: <loanParentComponent /> },
   { path: '/Approved', element: <LoanApproved /> },
-  { path: '/registerService', element: <RegisterServiceForm /> },
-  { path: '/loans', element: <loanParentComponent /> },
   { path: '/activateAccount', element: <ActivateAccount /> },
   { path: '/deactivateAccount', element: <DeactivateAccount /> },
   { path: '/stateAccount', element: <StatusAccount /> },
