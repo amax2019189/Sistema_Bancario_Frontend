@@ -29,6 +29,8 @@ const routes = [
   { path: '/conversor', element: <Convertidor /> },
   { path: '/transfer', element: <TransferPage /> },
   { path: '/services', element: <PayService /> },
+  { path: '/accountBalance', element: <AccountBalance /> },
+  { path: '/registerService', element: <RegisterServiceForm /> },
   { path: '/accountBalance', element: <AccountSummary /> },
   { path: '/loans', element: <loanParentComponent /> },
 
