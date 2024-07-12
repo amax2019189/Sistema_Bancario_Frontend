@@ -30,5 +30,4 @@ export const useGetNonApproveLoans = () => {
         isFetching: !Boolean(loans),
         allLoans: loans?.nonApprovedLoans
     }
-
 }

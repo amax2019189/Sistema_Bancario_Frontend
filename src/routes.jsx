@@ -19,6 +19,7 @@ import { loanParentComponent } from './components/loan/loanParentComponent.jsx';
 import { ActivateAccount } from './components/accounts/ActivateAccount.jsx';
 import { DeactivateAccount } from './components/accounts/DesactivatedAccount.jsx';
 import { LoanGetApproved } from './components/loan/LoanGetApproved.jsx'
+import { LoanComponent } from './components/nonApproved/NonApproved.jsx'
 
 // Routes
 const routes = [
@@ -40,7 +41,8 @@ const routes = [
   { path: '/loans', element: <loanParentComponent /> },
   { path: '/loansApproved', element: <LoanGetApproved /> },
   { path: '/activateAccount', element: <ActivateAccount/>},
-  { path: '/deactivateAccount', element: <DeactivateAccount/>}
+  { path: '/deactivateAccount', element: <DeactivateAccount/>},
+  { path: '/nonApproved', element: <LoanComponent/>}
 ];
 
 export default routes;
