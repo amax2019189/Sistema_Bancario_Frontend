@@ -18,9 +18,7 @@ import { LoanApproved } from './components/loan/loanApproved.jsx'
 import { loanParentComponent } from './components/loan/loanParentComponent.jsx';
 import { ActivateAccount } from './components/accounts/ActivateAccount.jsx';
 import { DeactivateAccount } from './components/accounts/DesactivatedAccount.jsx';
-import { LoanGetApproved } from './components/loan/LoanGetApproved.jsx'
-import { LoanComponent } from './components/nonApproved/NonApproved.jsx'
-
+import StatusAccount from './components/StatusAccount.jsx';
 
 // Routes
 const routes = [
@@ -38,12 +36,11 @@ const routes = [
   { path: '/registerService', element: <RegisterServiceForm /> }, ,
   { path: '/loans', element: <loanParentComponent /> },
   { path: '/Approved', element: <LoanApproved /> },
-  { path: '/registerService', element: <RegisterServiceForm /> },
   { path: '/loansApproved', element: <LoanGetApproved /> },
   { path: '/activateAccount', element: <ActivateAccount/>},
   { path: '/deactivateAccount', element: <DeactivateAccount/>},
   { path: '/nonApproved', element: <LoanComponent/>},
-
+  { path: '/stateAccount', element: <StatusAccount /> },
 
 
 ];

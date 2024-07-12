@@ -74,8 +74,8 @@ export const TransferPage = ({ switchPublicHandler }) => {
         break;
       default:
         break;
-    }
 
+    }
     setFormState((prevState) => ({
       ...prevState,
       [field]: {
@@ -121,7 +121,7 @@ export const TransferPage = ({ switchPublicHandler }) => {
 
   return (
     <>
-    <Sidebar/>
+      <Sidebar />
       <div className="max-w-xl mx-auto p-8 bg-white rounded-lg shadow-md">
         <h1 className="text-2xl font-bold mb-6">Transferencia</h1>
         <form>
