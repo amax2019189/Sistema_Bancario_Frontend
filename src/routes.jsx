@@ -14,8 +14,8 @@ import { AccountBalance } from './components/accountBalance/AccountBalance.jsx';
 import EditUser from './components/account/updateAccount.jsx';
 import { RegisterServiceForm } from '../src/pages/registerService/registerServiceForm.jsx';
 import { CreateAccountForm } from './components/accounts/CreateAccount.jsx'
-import { LoanApproved } from './components/loan/LoanApproved.jsx'
-import { LoanParentComponent } from './components/loan/LoanParentComponent.jsx';
+import { LoanApproved } from './components/loan/loanApproved.jsx'
+import { LoanParentComponent } from './components/loan/loanParentComponent.jsx';
 import { ActivateAccount } from './components/accounts/ActivateAccount.jsx';
 import { DeactivateAccount } from './components/accounts/DesactivatedAccount.jsx';
 import StatusAccount from './components/StatusAccount.jsx';

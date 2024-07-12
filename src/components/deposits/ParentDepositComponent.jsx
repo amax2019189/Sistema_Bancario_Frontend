@@ -17,22 +17,22 @@ export const ParentComponent = () => {
     const toggleDepositForm = () => {
         setShowDepositForm(!showDepositForm);
         setShowEditForm(false);
-        setShowReverseForm(false)
-        setShowServiceForm(false)
+        setShowReverseForm(false);
+        setShowServiceForm(false);
     };
 
     const toggleEditForm = () => {
         setShowEditForm(!showEditForm);
         setShowDepositForm(false);
-        setShowReverseForm(false)
-        setShowServiceForm(false)
+        setShowReverseForm(false);
+        setShowServiceForm(false);
     };
 
     const toggleReverseForm = () => {
         setShowReverseForm(!showReverseForm);
         setShowDepositForm(false);
         setShowEditForm(false);
-        setShowServiceForm(false)
+        setShowServiceForm(false);
     };
 
     //toggle Service register
@@ -40,7 +40,7 @@ export const ParentComponent = () => {
         setShowServiceForm(!showServiceForm)
         setShowDepositForm(false);
         setShowEditForm(false);
-        setShowReverseForm(false)
+        setShowReverseForm(false);
     }
 
     const [userData, setUserData] = useState(null);

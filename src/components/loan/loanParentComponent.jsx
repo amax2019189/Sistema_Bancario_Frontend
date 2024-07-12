@@ -1,6 +1,6 @@
 import { useState } from "react";
-import LoanWithdrawal from "./LoanWithdrawalComponent";
-import LoanPayment from './LoanPaymentComponent'
+import LoanWithdrawal from "./loanWithdrawalComponent";
+import LoanPayment from './loanPaymentComponent'
 import { useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import HeadPage from "../HeadPage";
