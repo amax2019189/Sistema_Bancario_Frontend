@@ -26,7 +26,7 @@ export const login = async ( data ) => {
     try {
         return await apiClient.post( '/auth/login', data );
 
-        //const { userDetails, token } = response.data; // Verifica que el destructuring sea correcto
+        const { userDetails, token } = response.data; // Verifica que el destructuring sea correcto
 
         //console.log( "User data from API:", userDetails );
 
@@ -158,7 +158,7 @@ export const accountbalance = async () => {
     }
 }
 
-export const createAccount = async (data) => {
+export const createAccount = async ( data ) => {
     try {
         return await apiClient.post( '/account/createAccount', data )
     } catch ( e ) {
@@ -169,7 +169,7 @@ export const createAccount = async (data) => {
     }
 }
 
-export const deleteAccount = async (data) => {
+export const deleteAccount = async ( data ) => {
     try {
         return await apiClient.delete( '/account/deleteAccount', data )
     } catch ( e ) {
@@ -180,7 +180,7 @@ export const deleteAccount = async (data) => {
     }
 }
 
-export const activateAccount = async (data) => {
+export const activateAccount = async ( data ) => {
     try {
         return await apiClient.post( '/account/activateAccount', data )
     } catch ( e ) {
@@ -190,3 +190,53 @@ export const activateAccount = async (data) => {
         }
     }
 }
+export const addFavoriteAccount = async ( userId, data ) => {
+    try {
+        return await apiClient.put( `/user/addFavorite/${userId}`, data );
+    } catch ( e ) {
+        return {
+            error: true,
+            error
+        }
+    }
+
+};
+
+// Función para eliminar una cuenta favorita
+export const removeFavoriteAccount = async ( userId, accountNumber ) => {
+    try {
+        return await apiClient.put( `/user/removeFavorite/${userId}`, { accountNumber } );
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+
+    }
+
+};
+
+// Función para actualizar el alias de una cuenta favorita
+export const updateFavoriteAlias = async ( userId, accountNumber, alias ) => {
+    try {
+        return await apiClient.put( `/user/updateFavoriteAlias/${userId}`, { accountNumber, alias } );
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+
+};
+
+// makeTransfer routes
+export const makeTransfer = async ( data ) => {
+    try {
+        return await apiClient.post( '/transfer/makeTransfer', data );
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+};
