@@ -13,6 +13,7 @@ import { PaidServices } from './components/services/ServicesView.jsx';
 import EditUser from './components/account/updateAccount.jsx';
 import { RegisterServiceForm } from '../src/pages/registerService/registerServiceForm.jsx';
 import { AccountBalance } from './components/accountBalance/AccountBalance.jsx'
+import { CreateAccountForm } from './components/accounts/CreateAccount.jsx'
 
 // Routes
 const routes = [
@@ -26,7 +27,8 @@ const routes = [
   { path: '/conversor', element: <Convertidor /> },
   { path: '/transfer', element: <TransferPage /> },
   { path: '/services', element: <PayService /> },
-  { path: '/accountBalance', element: <AccountBalance /> }
+  { path: '/accountBalance', element: <AccountBalance /> },
+  { path: '/createAccountForm', element: <CreateAccountForm/>}
 
 ];
 
