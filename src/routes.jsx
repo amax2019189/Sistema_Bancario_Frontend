@@ -38,9 +38,9 @@ const routes = [
   { path: '/registerService', element: <RegisterServiceForm /> },
   { path: '/loans', element: <loanParentComponent /> },
   { path: '/loansApproved', element: <LoanGetApproved /> },
-  { path: '/activateAccount', element: <ActivateAccount/>},
-  { path: '/deactivateAccount', element: <DeactivateAccount/>},
-  { path: '/nonApproved', element: <LoanComponent/>}
+  { path: '/activateAccount', element: <ActivateAccount /> },
+  { path: '/deactivateAccount', element: <DeactivateAccount /> },
+  { path: '/nonApproved', element: <LoanComponent /> },
   { path: '/activateAccount', element: <ActivateAccount /> },
   { path: '/stateAccount', element: <StatusAccount /> },
   { path: '/deactivateAccount', element: <DeactivateAccount /> }
