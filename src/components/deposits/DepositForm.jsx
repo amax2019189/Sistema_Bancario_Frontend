@@ -15,59 +15,71 @@ export const DepositForm = () => {
 
     return (
         <div className="max-w-xl mx-auto p-8 bg-white rounded-lg shadow-md">
-            <h1 className="text-2xl font-bold mb-6">Realizar Depósito</h1>
+            <h1 className="text-3xl font-bold mb-6 text-center text-blue-600">Realizar Depósito</h1>
             <form onSubmit={handleSubmit}>
-                <Input
-                    field="accountNumber"
-                    label="Número de Cuenta"
-                    value={depositData.accountNumber}
-                    onChangeHandler={handleInputChange}
-                    type="text"
-                    showErrorMessage={!!error.accountNumber}
-                    validationMessage={error.accountNumber}
-                    onBlurHandler={handleInputBlur}
-                    placeholder="9876543210"
-                    className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <Input
-                    field="amount"
-                    label="Monto"
-                    value={depositData.amount}
-                    onChangeHandler={handleInputChange}
-                    type="number"
-                    showErrorMessage={!!error.amount}
-                    validationMessage={error.amount}
-                    onBlurHandler={handleInputBlur}
-                    placeholder="123.45"
-                    className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <Input
-                    field="description"
-                    label="Descripción"
-                    value={depositData.description}
-                    onChangeHandler={handleInputChange}
-                    type="text"
-                    showErrorMessage={false}
-                    validationMessage=""
-                    onBlurHandler={handleInputBlur}
-                    textarea={true}
-                    placeholder="Opcional"
-                    className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-bold mb-2">Número de Cuenta</label>
+                    <input
+                        type="text"
+                        name="accountNumber"
+                        value={depositData.accountNumber}
+                        onChange={handleInputChange}
+                        onBlur={handleInputBlur}
+                        placeholder="9876543210"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    {!!error.accountNumber && (
+                        <p className="text-red-500 text-sm mt-1">{error.accountNumber}</p>
+                    )}
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-bold mb-2">Monto</label>
+                    <input
+                        type="number"
+                        name="amount"
+                        value={depositData.amount}
+                        onChange={handleInputChange}
+                        onBlur={handleInputBlur}
+                        placeholder="123.45"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    {!!error.amount && (
+                        <p className="text-red-500 text-sm mt-1">{error.amount}</p>
+                    )}
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-bold mb-2">Descripción</label>
+                    <textarea
+                        name="description"
+                        value={depositData.description}
+                        onChange={handleInputChange}
+                        onBlur={handleInputBlur}
+                        placeholder="Opcional"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">Tipo de Cambio</label>
                     <select
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         name="exchangeRate"
                         value={depositData.exchangeRate}
                         onChange={(e) => handleInputChange(e.target.value, 'exchangeRate')}
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                         <option value="quetzales">Quetzales</option>
                         <option value="dolares">Dólares</option>
                     </select>
                 </div>
-                {error.form && <div className="text-red-500 mb-4">{error.form}</div>}
-                {success && <div className="text-green-500 mb-4">Depósito realizado con éxito</div>}
+                {error.form && (
+                    <div className="text-red-500 mb-4">
+                        {error.form}
+                    </div>
+                )}
+                {success && (
+                    <div className="text-green-500 mb-4">
+                        Depósito realizado con éxito
+                    </div>
+                )}
                 <button
                     type="submit"
                     disabled={loading}
