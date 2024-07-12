@@ -3,9 +3,9 @@ import Sidebar from "../sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 
 
-const NavButton = ( { text, id, onClickHandler, className } ) => {
+const NavButton = ({ text, id, onClickHandler, className }) => {
   return (
-    <span className={className} id={id} onClick={() => onClickHandler( id )} style={{ color: 'white', cursor: 'pointer' }}>
+    <span className={className} id={id} onClick={() => onClickHandler(id)} style={{ color: 'white', cursor: 'pointer' }}>
       {text}
     </span >
   );
@@ -13,49 +13,47 @@ const NavButton = ( { text, id, onClickHandler, className } ) => {
 
 const AccountDetails = () => {
   const navi = useNavigate();
-  const [userData, setUserData] = useState( null );
+  const [userData, setUserData] = useState(null);
 
-  useEffect( () => {
+  useEffect(() => {
     // Function to obtain user data from localStorage
     const getUserDataFromLocalStorage = () => {
-      const user = localStorage.getItem( "user" );
-      if ( user ) {
-        const parsedUser = JSON.parse( user );
-        setUserData( parsedUser );
+      const user = localStorage.getItem("user");
+      if (user) {
+        const parsedUser = JSON.parse(user);
+        setUserData(parsedUser);
       }
     };
 
     getUserDataFromLocalStorage();
-  }, [] );
+  }, []);
 
 
 
   // Function to format birthdate
-  const formatDate = ( birthdate ) => {
-    if ( !birthdate ) return ""; // Handle case where birthdate is not available
+  const formatDate = (birthdate) => {
+    if (!birthdate) return ""; // Handle case where birthdate is not available
 
     // Create a Date object from birthdate string
-    const dateObj = new Date( birthdate );
+    const dateObj = new Date(birthdate);
 
     // Format the date as desired (e.g., DD/MM/YYYY)
-    return dateObj.toLocaleDateString( "es-ES", {
+    return dateObj.toLocaleDateString("es-ES", {
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
-    } );
+    });
   };
 
   const handleEdit = () => {
-    navi( '/editUser' )
+    navi('/editUser')
   }
 
   return (
     <div id="body" className="bg-slate-50 h-screen flex">
       <Sidebar />
       <div className="container mx-auto mt-[5rem] w-full  flex-col ml-80">
-        <h1 className="text-4xl font-bold mb-8 text-center text-gray-800">
-          Perfil de Usuario
-        </h1>
+
         <h1 className="text-4xl font-bold mb-8 text-center text-gray-800">
           Mi cuenta
         </h1>
@@ -92,7 +90,7 @@ const AccountDetails = () => {
                 <span className="font-semibold text-gray-900">
                   Fecha de nacimiento:
                 </span>{" "}
-                {userData.birthdate ? formatDate( userData.birthdate ) : "No disponible"}
+                {userData.birthdate ? formatDate(userData.birthdate) : "No disponible"}
               </p>
               <p className="text-xl text-gray-700">
                 <span className="font-semibold text-gray-900">Email:</span>{" "}
