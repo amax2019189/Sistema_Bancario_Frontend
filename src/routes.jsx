@@ -39,6 +39,7 @@ const routes = [
   { path: '/activateAccount', element: <ActivateAccount /> },
   { path: '/deactivateAccount', element: <DeactivateAccount /> },
   { path: '/stateAccount', element: <StatusAccount /> },
+  { path: '/editUser', element: <EditUser /> },
 
 ];
 

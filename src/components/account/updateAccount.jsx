@@ -29,7 +29,8 @@ const EditUser = () => {
     const fetchUserData = async ( userId ) => {
         try {
             const response = await getUser( userId );
-            const { name, email, lastname, numbercel, img } = response.data.user;
+            console.log( 'Response user:', response )
+            const { name, email, lastname, numbercel, img } = response.data;
             setUserData( {
                 name,
                 email,
@@ -69,9 +70,9 @@ const EditUser = () => {
 
     return (
         <>
+            <Sidebar />
+            <div className="w-auto flex items-center gap-7 ml-80 p-7">
 
-            <div className="container mx-auto mt-8">
-                <Sidebar />
                 <h2 className="text-3xl font-semibold mb-4">Edit User Information</h2>
                 <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
                     <Input
