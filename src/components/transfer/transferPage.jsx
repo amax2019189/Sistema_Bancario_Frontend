@@ -3,38 +3,40 @@ import Sidebar from '../sidebar/Sidebar';
 import useTransfer from '../../shared/hooks/useTransfer';
 import { useFavorites } from '../../shared/hooks/useFavorites';
 import toast from 'react-hot-toast';
+import HeadPage from '../HeadPage';
+import HeaderTransfer from './HeaderTransfer';
 
-const TransferForm = ( { onSubmit, isLoading } ) => {
+const TransferForm = ({ onSubmit, isLoading }) => {
   const { makeTransfer } = useTransfer();
   const { addFavorite } = useFavorites();
-  const userForId = localStorage.getItem( 'user' )
-  const { _id } = JSON.parse( userForId );
-  const [formData, setFormData] = useState( {
+  const userForId = localStorage.getItem('user')
+  const { _id } = JSON.parse(userForId);
+  const [formData, setFormData] = useState({
     accountNumberOrigen: '',
     accountNumberDestino: '',
     amount: '',
     description: '',
     saveAsFavorite: false,
     alias: ''
-  } );
+  });
 
-  const handleChange = ( e ) => {
+  const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData( prevState => ( {
+    setFormData(prevState => ({
       ...prevState,
       [name]: type === 'checkbox' ? checked : value
-    } ) );
+    }));
   };
 
-  const handleSubmit = async ( e ) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await makeTransfer( formData );
-      if ( formData.saveAsFavorite ) {
-        await addFavorite( _id, { accountNumber: formData.accountNumberDestino, alias: formData.alias } );
+      await makeTransfer(formData);
+      if (formData.saveAsFavorite) {
+        await addFavorite(_id, { accountNumber: formData.accountNumberDestino, alias: formData.alias });
       }
-      toast.success( 'Transferencia realizada exitosamente' );
-    } catch ( err ) {
+      toast.success('Transferencia realizada exitosamente');
+    } catch (err) {
       // Error handling is done inside the hooks
     }
   };
@@ -42,6 +44,9 @@ const TransferForm = ( { onSubmit, isLoading } ) => {
   return (
     <>
       <Sidebar />
+      <div className='ml-80 p-nonel'>
+        <HeaderTransfer />
+      </div>
       <div className='container right w-full flex gap-2 flex-col ml-30 mx-auto mt-50'>
         <form onSubmit={handleSubmit} className="max-w-xl mx-auto p-8 bg-white rounded-lg shadow-md">
           <div className="mb-6">

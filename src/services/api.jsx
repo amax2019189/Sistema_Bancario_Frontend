@@ -166,7 +166,7 @@ export const createAccount = async (data) => {
 
 export const deleteAccount = async (data) => {
     try {
-        return await apiClient.delete('/account/deleteAccount', data)
+        return await apiClient.post('/account/deleteAccount', data)
     } catch (e) {
         return {
             error: true,
@@ -185,6 +185,7 @@ export const activateAccount = async (data) => {
         }
     }
 }
+
 export const addFavoriteAccount = async (userId, data) => {
     try {
         return await apiClient.put(`/user/addFavorite/${userId}`, data);

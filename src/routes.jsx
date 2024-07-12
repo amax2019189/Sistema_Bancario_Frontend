@@ -16,6 +16,8 @@ import { RegisterServiceForm } from '../src/pages/registerService/registerServic
 import { CreateAccountForm } from './components/accounts/CreateAccount.jsx'
 import {LoanApproved} from './components/loan/loanApproved.jsx'
 import { loanParentComponent } from './components/loan/loanParentComponent.jsx';
+import { ActivateAccount } from './components/accounts/ActivateAccount.jsx';
+import { DeactivateAccount } from './components/accounts/DesactivatedAccount.jsx';
 
 // Routes
 const routes = [
@@ -33,6 +35,10 @@ const routes = [
   { path: '/registerService', element: <RegisterServiceForm /> },,
   { path: '/loans', element: <loanParentComponent /> },
   { path: '/Approved', element: <LoanApproved /> },
+  { path: '/registerService', element: <RegisterServiceForm /> },
+  { path: '/loans', element: <loanParentComponent /> },
+  { path: '/activateAccount', element: <ActivateAccount/>},
+  { path: '/deactivateAccount', element: <DeactivateAccount/>}
 ];
 
 export default routes;
