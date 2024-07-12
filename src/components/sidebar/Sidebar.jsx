@@ -78,9 +78,9 @@ export default function Sidebar () {
                     <li>
                         <a
                             className="block px-4 py-2.5 text-white hover:bg-[#00AAE4] hover:text-white rounded-lg"
-                            href={"/deposits"}
+                            href={"/administrador"}
                         >
-                            Depositos
+                            Administrador
                         </a>
                     </li>
                     <li>

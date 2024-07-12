@@ -155,6 +155,39 @@ export const accountbalance = async () => {
         }
     }
 }
+
+export const createAccount = async ( data ) => {
+    try {
+        return await apiClient.post( '/account/createAccount', data )
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
+export const deleteAccount = async ( data ) => {
+    try {
+        return await apiClient.delete( '/account/deleteAccount', data )
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
+export const activateAccount = async ( data ) => {
+    try {
+        return await apiClient.post( '/account/activateAccount', data )
+    } catch ( e ) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
 export const addFavoriteAccount = async ( userId, data ) => {
     try {
         return await apiClient.put( `/user/addFavorite/${userId}`, data );
